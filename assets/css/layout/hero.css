@@ -152,7 +152,7 @@
 	-webkit-font-smoothing: antialiased;
 }
 .hero-cta .btn-primary {
-	background: var(--color-accent);
+	background: var(--color-primary);
 	color: var(--color-white);
 	border: 1px solid var(--color-accent-dark);
 }
