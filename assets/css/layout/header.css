@@ -1,0 +1,204 @@
+/* header.css placeholder */
+.site-header {
+	background: #fff;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	padding: 0 0;
+	min-height: 115px;
+	position: relative;
+}
+
+.site-branding {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+#site-navigation {
+	flex: 1 1 auto;
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+}
+
+#site-navigation .menu {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin: 0;
+	padding: 0;
+}
+
+/* Keep menu items inline and allow donate to sit on the far right using auto margin */
+#site-navigation .menu > li {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* Hide sub-menus by default */
+#site-navigation .sub-menu {
+	display: none;
+}
+
+#site-navigation .menu > li {
+	list-style: none;
+}
+
+/* Menu item intended to be used as a nav logo. Target the class `menu-nav-icon`. */
+#site-navigation .menu > li.menu-nav-icon {
+	order: -1; /* put it before other items in the flex row */
+	margin-right: 1rem;
+}
+#site-navigation .menu > li.menu-nav-icon > a {
+	display: inline-flex;
+	align-items: center;
+	padding: 0;
+}
+#site-navigation .menu > li.menu-nav-icon img {
+	display: block;
+	height: 48px;
+	width: auto;
+}
+
+@media (max-width: 992px) {
+	#site-navigation .menu > li.menu-nav-icon img {
+		height: 40px;
+	}
+}
+
+@media (max-width: 767px) {
+	#site-navigation .menu > li.menu-nav-icon img {
+		height: 32px;
+	}
+}
+
+/* Support a standalone .menu-nav-icon element (hard-coded before the menu) */
+.menu-nav-icon {
+	display: inline-flex;
+	align-items: center;
+}
+.menu-nav-icon img {
+	height: 48px;
+	width: auto;
+	display: block;
+}
+
+@media (max-width: 992px) {
+	.menu-nav-icon img {
+		height: 40px;
+	}
+}
+
+@media (max-width: 767px) {
+	.menu-nav-icon img {
+		height: 32px;
+	}
+}
+
+/* Push Donate to the far right */
+#site-navigation .menu > li.menu-item-28 {
+	margin-left: auto;
+}
+
+/* Highlight the Donate link */
+#site-navigation .menu > li.menu-item-28 > a {
+	background: var(--color-accent);
+	color: var(--color-white);
+	padding: 0.45rem 0.85rem;
+	border-radius: 4px;
+	display: inline-block;
+}
+
+#site-navigation .menu > li.menu-item-28 > a:hover {
+	background: var(--color-accent-dark);
+}
+
+/* Mobile: stack header and remove auto margin so Donate sits on its own row */
+@media (max-width: 767px) {
+	.site-header {
+		flex-direction: column;
+		align-items: stretch;
+	}
+	#site-navigation .menu {
+		flex-wrap: wrap;
+	}
+	#site-navigation .menu > li.menu-item-28 {
+		margin-left: 0;
+		margin-top: 0.5rem;
+	}
+}
+
+/* Remove blue underlines from nav links */
+#site-navigation a {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* Menu toggle (hidden on desktop) */
+.menu-toggle {
+	display: none;
+	background: transparent;
+	border: 0;
+	font-size: 1.25rem;
+	cursor: pointer;
+	padding: 0.5rem;
+}
+
+/* Responsive: at 992px and below switch to hamburger */
+@media (max-width: 992px) {
+	/* Layout nav as a flex row in the nav wrapper. Use ordering to position
+	   the logo (left), the menu (center when opened), and the toggle (right). */
+	#site-navigation {
+		position: relative;
+	}
+
+	/* hide the menu by default on small screens */
+	#site-navigation .menu {
+		display: none;
+		position: absolute;
+		left: 50%;
+		top: 115px; /* place below header */
+		transform: translateX(-50%);
+		flex-direction: column;
+		gap: 0.5rem;
+		background: transparent;
+		padding: 0.5rem 1rem;
+		align-items: center;
+		z-index: 50;
+	}
+
+	.menu-toggle {
+		display: block;
+		order: 3;
+		margin-left: 0;
+	}
+
+	/* Logo/menu icon ordering */
+	.menu-nav-icon {
+		order: 1;
+	}
+	#site-navigation .menu {
+		order: 2;
+	}
+
+	/* When toggled, show menu centered below header */
+	#site-navigation.toggled .menu {
+		display: flex;
+	}
+
+	/* Ensure donate sits inline in stacked menu */
+	#site-navigation .menu > li.menu-item-28 {
+		margin-left: 0;
+	}
+}
+
+/* Desktop/large: ensure items align horizontally */
+@media (min-width: 993px) {
+	#site-navigation {
+		justify-content: flex-start;
+	}
+	.menu-toggle {
+		display: none;
+	}
+}

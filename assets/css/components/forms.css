@@ -1,0 +1,7 @@
+/* forms.css placeholder */
+input,
+textarea,
+select {
+	border: 1px solid #ccc;
+	padding: 0.5rem;
+}

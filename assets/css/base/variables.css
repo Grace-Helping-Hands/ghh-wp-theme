@@ -1,0 +1,43 @@
+/* variables.css placeholder */
+:root {
+	/* Brand Colors */
+	--color-primary: #0f6b63; /* Grace Helping Hands teal */
+	--color-primary-dark: #0b544e;
+	--color-primary-light: #4f9f98;
+
+	--color-accent: #d4a62a; /* Gold */
+	--color-accent-dark: #b88e20;
+	--color-accent-light: #e8c867;
+
+	/* Neutrals */
+	--color-white: #ffffff;
+	--color-off-white: #f8f8f8;
+	--color-light-gray: #e9ecef;
+	--color-gray: #6c757d;
+	--color-dark-gray: #343a40;
+	--color-black: #1c1c1c;
+
+	/* Typography */
+	--color-heading: #461312;
+	--color-body: #4b5563;
+	--color-link: var(--color-primary);
+
+	/* Backgrounds */
+	--color-bg: #ffffff;
+	--color-bg-alt: #f5f7f7;
+	--color-section-dark: #0f6b63;
+
+	/* Borders */
+	--color-border: #dfe5e8;
+
+	/* Breakpoints */
+	--bp-sm: 576px;
+	--bp-md: 768px;
+	--bp-lg: 992px;
+	--bp-xl: 1200px;
+	--bp-xxl: 1400px;
+
+	/* Typography */
+	--font-sans: "Sofia Sans", Inter, -apple-system, "Segoe UI", Roboto,
+		"Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}

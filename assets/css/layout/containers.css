@@ -1,0 +1,15 @@
+/* containers.css placeholder */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Mobile-first: increase horizontal padding at desktop breakpoint (≥992px) */
+@media (min-width: 992px) {
+	.container {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}

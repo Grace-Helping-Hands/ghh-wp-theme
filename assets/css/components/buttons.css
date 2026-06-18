@@ -1,0 +1,7 @@
+/* buttons.css placeholder */
+.button {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	background: var(--color-primary);
+	color: #fff;
+}

@@ -1,0 +1,17 @@
+/* typography.css placeholder */
+body {
+	line-height: 1.5;
+	font-family: var(--font-sans);
+}
+h1 {
+	font-family: "Sofia Sans", sans-serif !important;
+	color: var(--color-heading);
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
+	font-family: var(--font-sans);
+}
