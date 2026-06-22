@@ -5,7 +5,7 @@ get_header();
 ?>
 
 <?php get_template_part( 'template-parts/front/hero' ); ?>
-<section class="container">
+<section class="containerr">
 <?php the_content(); ?>
 </section>
 

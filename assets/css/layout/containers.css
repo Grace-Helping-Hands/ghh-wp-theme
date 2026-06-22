@@ -1,7 +1,7 @@
 /* containers.css placeholder */
 .container {
 	max-width: 1200px;
-	margin: 0 auto;
+	margin: 0 auto !important;
 	padding-left: 15px;
 	padding-right: 15px;
 }

@@ -1,0 +1,19 @@
+.py-sm {
+	padding-top: var(--tp-sm);
+	padding-bottom: var(--bp-sm);
+}
+
+.py-md {
+	padding-top: var(--tp-md);
+	padding-bottom: var(--bp-md);
+}
+
+.py-lg {
+	padding-top: var(--tp-lg);
+	padding-bottom: var(--bp-lg);
+}
+
+.py-xl {
+	padding-top: var(--tp-xl);
+	padding-bottom: var(--bp-xl);
+}
