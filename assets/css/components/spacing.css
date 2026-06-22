@@ -17,3 +17,7 @@
 	padding-top: var(--tp-xl);
 	padding-bottom: var(--bp-xl);
 }
+
+.pb-md {
+	padding-bottom: var(--bp-md);
+}

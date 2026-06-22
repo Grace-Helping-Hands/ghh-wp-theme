@@ -1,3 +1,11 @@
 .bg-light-1 {
 	background-color: var(--color-bg-light-1);
 }
+
+.bg-light-2 {
+	background-color: var(--color-bg-light-2);
+}
+
+.bg-dark-1 {
+	background-color: var(--color-bg-dark-1);
+}

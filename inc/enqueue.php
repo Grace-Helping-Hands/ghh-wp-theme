@@ -6,6 +6,7 @@ function ghh_enqueue_assets() {
     // Theme CSS variables (must load before other theme styles)
     wp_enqueue_style( 'ghh-variables', get_template_directory_uri() . '/assets/css/base/variables.css', array( 'ghh-fonts' ), '1.0' );
     wp_enqueue_style( 'ghh-backgrounds', get_template_directory_uri() . '/assets/css/components/backgrounds.css', array( 'ghh-variables' ), '1.0' );
+    wp_enqueue_style( 'ghh-buttons', get_template_directory_uri() . '/assets/css/components/buttons.css', array( 'ghh-variables' ), '1.0' );
     wp_enqueue_style( 'ghh-spacings', get_template_directory_uri() . '/assets/css/components/spacing.css', array( 'ghh-variables' ), '1.0' );
     wp_enqueue_style( 'ghh-style', get_stylesheet_uri(), array( 'ghh-fonts', 'ghh-variables' ), wp_get_theme()->get( 'Version' ) );
     wp_enqueue_style( 'ghh-containers', get_template_directory_uri() . '/assets/css/layout/containers.css', array( 'ghh-style' ), '1.0' );
