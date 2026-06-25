@@ -7,6 +7,10 @@
 	padding: 0 0;
 	min-height: 115px;
 	position: relative;
+	/* Mobile-first defaults: stack */
+	flex-direction: column;
+	align-items: stretch;
+	z-index: 10001;
 }
 
 .site-branding {
@@ -15,25 +19,43 @@
 	gap: 0.75rem;
 }
 
+.menu-main-nav-container {
+	width: 100%;
+	order: 2;
+}
+
 #site-navigation {
 	flex: 1 1 auto;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	gap: 1rem;
+	position: relative;
+	width: 100%;
 }
 
 #site-navigation .menu {
-	display: flex;
+	/* mobile: hidden until toggled */
+	display: none;
+	position: absolute;
+	left: 50%;
+	top: 115px;
+	transform: translateX(-50%);
+	flex-direction: column;
+	gap: 0.5rem;
+	background: transparent;
+	padding: 0.5rem 1rem;
 	align-items: center;
-	gap: 0.75rem;
+	z-index: 50;
 	margin: 0;
 	padding: 0;
 }
 
-/* Keep menu items inline and allow donate to sit on the far right using auto margin */
+/* Keep menu items inline on larger screens */
 #site-navigation .menu > li {
 	display: inline-flex;
 	align-items: center;
+	list-style: none;
 }
 
 /* Hide sub-menus by default */
@@ -41,13 +63,44 @@
 	display: none;
 }
 
-#site-navigation .menu > li {
-	list-style: none;
+@media (max-width: 992px) {
+	#site-navigation .menu .sub-menu {
+		display: block;
+		position: static;
+		margin: 0.25rem 0 0 1rem;
+		padding-left: 1rem;
+		border-left: 2px solid rgba(0, 0, 0, 0.12);
+	}
 }
 
-/* Menu item intended to be used as a nav logo. Target the class `menu-nav-icon`. */
+#site-navigation .menu > .menu-item a {
+	font-size: 1.125rem;
+	font-weight: 600;
+	color: var(--color-primary);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+#site-navigation .menu > .menu-item a {
+	font-size: 1.125rem;
+	font-weight: 700;
+	color: var(--color-primary);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	border-bottom: 2px solid transparent;
+}
+
+#site-navigation .menu > .menu-item a:hover,
+#site-navigation .menu > .menu-item.current-menu-item > a,
+#site-navigation .menu > .menu-item.current-menu-ancestor > a,
+#site-navigation .menu > .menu-item.current-menu-parent > a,
+#site-navigation .menu > .menu-item.current-page-ancestor > a {
+	border-bottom: 2px solid #461312;
+}
+
+/* Menu nav-icon defaults (mobile) */
 #site-navigation .menu > li.menu-nav-icon {
-	order: -1; /* put it before other items in the flex row */
+	order: -1;
 	margin-right: 1rem;
 }
 #site-navigation .menu > li.menu-nav-icon > a {
@@ -57,76 +110,39 @@
 }
 #site-navigation .menu > li.menu-nav-icon img {
 	display: block;
-	height: 48px;
+	height: 80px;
 	width: auto;
 }
 
-@media (max-width: 992px) {
-	#site-navigation .menu > li.menu-nav-icon img {
-		height: 40px;
-	}
-}
-
-@media (max-width: 767px) {
-	#site-navigation .menu > li.menu-nav-icon img {
-		height: 32px;
-	}
-}
-
-/* Support a standalone .menu-nav-icon element (hard-coded before the menu) */
 .menu-nav-icon {
 	display: inline-flex;
 	align-items: center;
 }
 .menu-nav-icon img {
-	height: 48px;
+	height: 80px;
 	width: auto;
 	display: block;
 }
 
-@media (max-width: 992px) {
-	.menu-nav-icon img {
-		height: 40px;
-	}
-}
-
-@media (max-width: 767px) {
-	.menu-nav-icon img {
-		height: 32px;
-	}
-}
-
-/* Push Donate to the far right */
+/* Donate button: mobile stacked */
 #site-navigation .menu > li.menu-item-28 {
-	margin-left: auto;
+	margin-left: 0;
+	margin-top: 0.5rem;
 }
 
-/* Highlight the Donate link */
 #site-navigation .menu > li.menu-item-28 > a {
-	background: var(--color-accent);
-	color: var(--color-white);
-	padding: 0.45rem 0.85rem;
+	/* background: var(--color-accent); */
+	/* color: var(--color-white); */
+	/* padding: 0.45rem 0.85rem; */
+	padding: 1.125rem 2rem;
+	border-bottom: 4px solid transparent;
 	border-radius: 4px;
 	display: inline-block;
 }
 
 #site-navigation .menu > li.menu-item-28 > a:hover {
-	background: var(--color-accent-dark);
-}
-
-/* Mobile: stack header and remove auto margin so Donate sits on its own row */
-@media (max-width: 767px) {
-	.site-header {
-		flex-direction: column;
-		align-items: stretch;
-	}
-	#site-navigation .menu {
-		flex-wrap: wrap;
-	}
-	#site-navigation .menu > li.menu-item-28 {
-		margin-left: 0;
-		margin-top: 0.5rem;
-	}
+	/* background: var(--color-accent-dark); */
+	border: 4px solid #461312;
 }
 
 /* Remove blue underlines from nav links */
@@ -135,70 +151,162 @@
 	color: inherit;
 }
 
-/* Menu toggle (hidden on desktop) */
+/* Menu toggle (mobile visible) */
 .menu-toggle {
-	display: none;
+	display: block;
 	background: transparent;
 	border: 0;
 	font-size: 1.25rem;
 	cursor: pointer;
 	padding: 0.5rem;
+	order: 3;
+	margin-left: 0;
 }
 
-/* Responsive: at 992px and below switch to hamburger */
-@media (max-width: 992px) {
-	/* Layout nav as a flex row in the nav wrapper. Use ordering to position
-	   the logo (left), the menu (center when opened), and the toggle (right). */
-	#site-navigation {
-		position: relative;
-	}
+/* Hamburger icon bars */
+.menu-toggle {
+	width: 36px;
+	height: 36px;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	color: var(--color-primary);
+}
+.menu-toggle {
+	margin-left: auto;
+}
+.menu-toggle span {
+	display: block;
+	width: 22px;
+	height: 2px;
+	background: currentColor;
+	transition: transform 200ms ease, opacity 180ms ease;
+	border-radius: 2px;
+}
+.menu-toggle .burger-bun {
+	display: block;
+}
+.menu-toggle .burger-meat {
+	display: block;
+}
 
-	/* hide the menu by default on small screens */
-	#site-navigation .menu {
-		display: none;
-		position: absolute;
-		left: 50%;
-		top: 115px; /* place below header */
-		transform: translateX(-50%);
-		flex-direction: column;
-		gap: 0.5rem;
-		background: transparent;
-		padding: 0.5rem 1rem;
-		align-items: center;
-		z-index: 50;
-	}
+/* Open state: transform to X */
+.menu-toggle.is-open .burger-bun:first-child {
+	transform: translateY(6px) rotate(45deg);
+}
+.menu-toggle.is-open .burger-bun:nth-last-child(2) {
+	transform: translateY(-6px) rotate(-45deg);
+}
+.menu-toggle.is-open .burger-meat {
+	opacity: 0;
+	transform: scaleX(0);
+}
 
-	.menu-toggle {
-		display: block;
-		order: 3;
-		margin-left: 0;
-	}
+/* When toggled show menu: mobile overlay that appears below the header */
+#site-navigation.toggled .menu {
+	display: flex;
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	/* place overlay beneath the header (header min-height is 115px) */
+	top: 115px;
+	transform: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1.25rem;
+	background: rgba(255, 255, 255);
+	color: var(--color-white);
+	padding: 1.25rem 1rem;
+	z-index: 9999;
+	overflow-y: auto; /* make overlay scrollable when content exceeds viewport */
+	-webkit-overflow-scrolling: touch; /* smooth native scrolling on iOS */
+	animation: menu-slide-in 220ms ease-out forwards;
+}
 
-	/* Logo/menu icon ordering */
-	.menu-nav-icon {
-		order: 1;
+/* Make menu links more legible on overlay */
+#site-navigation.toggled .menu > li > a {
+	font-size: 1.25rem;
+	padding: 0.75rem 1rem;
+}
+
+/* Tablet: >=768px */
+@media (min-width: 768px) {
+	#site-navigation .menu > li.menu-nav-icon img {
+		height: 80px;
 	}
-	#site-navigation .menu {
+	.menu-nav-icon img {
+		height: 80px;
+	}
+	.menu-main-nav-container {
 		order: 2;
 	}
-
-	/* When toggled, show menu centered below header */
-	#site-navigation.toggled .menu {
-		display: flex;
-	}
-
-	/* Ensure donate sits inline in stacked menu */
-	#site-navigation .menu > li.menu-item-28 {
-		margin-left: 0;
-	}
 }
 
-/* Desktop/large: ensure items align horizontally */
+/* Desktop: >=993px */
 @media (min-width: 993px) {
-	#site-navigation {
-		justify-content: flex-start;
+	.site-header {
+		flex-direction: row;
+		align-items: center;
 	}
+
+	#site-navigation .menu {
+		display: flex;
+		position: static;
+		transform: none;
+		left: auto;
+		top: auto;
+		flex-direction: row;
+		gap: 1rem;
+		background: transparent;
+		padding: 0;
+		align-items: center;
+		z-index: auto;
+	}
+
+	/* Desktop: show sub-menus on hover/focus */
+	#site-navigation .menu .menu-item-has-children:hover > .sub-menu,
+	#site-navigation .menu .menu-item-has-children.show-submenu > .sub-menu {
+		display: block;
+		position: absolute;
+		background: white;
+		box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+		padding: 0.5rem 0;
+		margin-top: 0.25rem;
+		min-width: 200px;
+		z-index: 60;
+	}
+
+	#site-navigation .menu .sub-menu {
+		display: none;
+		position: absolute;
+		left: 0;
+		top: 100%;
+	}
+
+	#site-navigation .menu > li.menu-item-28 {
+		margin-left: auto;
+		margin-top: 0;
+	}
+
+	#site-navigation .menu > li.menu-nav-icon img,
+	.menu-nav-icon img {
+		height: 100px;
+	}
+
 	.menu-toggle {
 		display: none;
+	}
+
+	.menu-main-nav-container {
+		order: initial;
+		width: 100%;
+	}
+
+	#site-navigation {
+		justify-content: flex-start;
 	}
 }

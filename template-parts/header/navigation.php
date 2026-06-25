@@ -1,6 +1,8 @@
 <nav id="site-navigation" class="main-navigation" aria-label="Main Menu">
     <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
-        <span class="menu-icon">☰</span>
+        <span class="burger-bun"></span>
+        <span class="burger-meat"></span>
+        <span class="burger-bun"></span>
         <span class="screen-reader-text">Menu</span>
     </button>
 
