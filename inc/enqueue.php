@@ -10,8 +10,10 @@ function ghh_enqueue_assets() {
 
     // Load Sofia Sans from Google Fonts (fallbacks provided in CSS variables)
     wp_enqueue_style( 'ghh-fonts', 'https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;600;700&display=swap', array(), null );
+    // Reset (global box-sizing etc.)
+    wp_enqueue_style( 'ghh-reset', get_template_directory_uri() . '/assets/css/base/reset.css', array(), $asset_version( '/assets/css/base/reset.css' ) );
     // Theme CSS variables (must load before other theme styles)
-    wp_enqueue_style( 'ghh-variables', get_template_directory_uri() . '/assets/css/base/variables.css', array( 'ghh-fonts' ), $asset_version( '/assets/css/base/variables.css' ) );
+    wp_enqueue_style( 'ghh-variables', get_template_directory_uri() . '/assets/css/base/variables.css', array( 'ghh-fonts', 'ghh-reset' ), $asset_version( '/assets/css/base/variables.css' ) );
     wp_enqueue_style( 'ghh-backgrounds', get_template_directory_uri() . '/assets/css/components/backgrounds.css', array( 'ghh-variables' ), $asset_version( '/assets/css/components/backgrounds.css' ) );
     wp_enqueue_style( 'ghh-buttons', get_template_directory_uri() . '/assets/css/components/buttons.css', array( 'ghh-variables' ), $asset_version( '/assets/css/components/buttons.css' ) );
     wp_enqueue_style( 'ghh-spacings', get_template_directory_uri() . '/assets/css/components/spacing.css', array( 'ghh-variables' ), $asset_version( '/assets/css/components/spacing.css' ) );

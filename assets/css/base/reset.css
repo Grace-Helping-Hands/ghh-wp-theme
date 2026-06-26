@@ -1,4 +1,12 @@
 /* reset.css placeholder */
+
+/* Use the more convenient box model everywhere */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
 html,
 body,
 div,
