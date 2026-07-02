@@ -1,7 +1,7 @@
 /* variables.css placeholder */
 :root {
 	/* Brand Colors */
-	--color-primary: #724227; /* Grace Helping Hands teal */
+	--color-primary: #461312; /* Grace Helping Hands teal */
 	--color-primary-dark: #0b544e;
 	--color-primary-light: #4f9f98;
 
@@ -31,6 +31,7 @@
 	--color-bg-light-1: #f0eae5;
 	--color-bg-light-2: #f0eae5;
 	--color-bg-dark-1: #edd7d7;
+	--color-bg-dark-2: #461312;
 
 	/* Buttons */
 	--color-brand-1: #df804d;

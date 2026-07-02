@@ -1,3 +1,4 @@
 <div class="site-info">
-    &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>
+    <hr>
+    &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>. All Rights Reserved. 
 </div>

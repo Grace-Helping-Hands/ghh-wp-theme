@@ -15,7 +15,7 @@
 		text-decoration: none;
 		font-size: 1.125rem;
 		transition: background-color 150ms ease, transform 120ms ease,
-			box-shadow 150ms ease;
+			box-shadow 150ms ease, border 200ms;
 		cursor: pointer;
 		/* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); */
 		-webkit-font-smoothing: antialiased;

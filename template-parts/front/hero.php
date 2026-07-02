@@ -6,7 +6,7 @@
             <div class="hero-excerpt"><?php the_excerpt(); ?></div>
             <div class="hero-cta">
                 <a class="btn btn-primary" href="<?php echo esc_url( home_url( '/donate' ) ); ?>">Donate Today</a>
-                <a class="btn btn-secondary" href="<?php echo esc_url( home_url( '/get-involved' ) ); ?>">Learn More</a>
+                <a class="btn btn-secondary" href="<?php echo esc_url( home_url( '#about-us' ) ); ?>">Learn More</a>
             </div>
              <!-- social -->
          <ul class="wp-block-social-links has-normal-icon-size has-icon-color is-style-logos-only is-content-justification-space-between is-layout-flex wp-container-core-social-links-is-layout-cfe5ce44 wp-block-social-links-is-layout-flex"><li style="color:#431313" class="wp-social-link wp-social-link-facebook wp-block-social-link"><a rel="noopener nofollow" target="_blank" href="https://www.facebook.com/p/Grace-Helping-Hands-Inc-61566737904322/" class="wp-block-social-link-anchor"><svg width="24" height="24" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false"><path d="M12 2C6.5 2 2 6.5 2 12c0 5 3.7 9.1 8.4 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.3v7C18.3 21.1 22 17 22 12c0-5.5-4.5-10-10-10z"></path></svg><span class="wp-block-social-link-label screen-reader-text">Facebook</span></a></li>
