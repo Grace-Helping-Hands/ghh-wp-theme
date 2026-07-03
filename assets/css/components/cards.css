@@ -1,5 +1,99 @@
-/* cards.css placeholder */
-.card {
-	border: 1px solid #eee;
-	padding: 1rem;
+/* cards.css — blog card styles and grid layout */
+.blog-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(280px, 320px));
+	gap: var(--space-lg);
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	justify-content: center;
+	width: min(100%, calc(3 * 320px + 2 * var(--space-lg)));
+}
+
+@media (max-width: 1199px) {
+	.blog-grid {
+		grid-template-columns: repeat(2, minmax(280px, 320px));
+		width: min(100%, calc(2 * 320px + var(--space-lg)));
+	}
+}
+
+@media (max-width: 767px) {
+	.blog-grid {
+		grid-template-columns: minmax(280px, 1fr);
+		width: 100%;
+		gap: var(--space-md);
+	}
+}
+
+.post-card {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	background: var(--color-white);
+	border: 1px solid var(--color-light-gray);
+	border-radius: 1rem;
+	overflow: hidden;
+	box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+	transition: transform 220ms ease, box-shadow 220ms ease,
+		border-color 220ms ease;
+}
+
+.post-card:hover,
+.post-card:focus-within {
+	transform: translateY(-0.25rem);
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+	border-color: rgba(70, 19, 18, 0.15);
+}
+
+.post-card__link {
+	color: inherit;
+	text-decoration: none;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.post-card__media {
+	width: 100%;
+	min-height: 220px;
+	object-fit: cover;
+	display: block;
+}
+
+.post-card__body {
+	padding: var(--space-md);
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	flex: 1 1 auto;
+}
+
+.post-card__meta {
+	font-size: 0.9rem;
+	color: var(--color-gray);
+}
+
+.post-card__title {
+	margin: 0;
+	font-size: 1.35rem;
+	color: var(--color-heading);
+}
+
+.post-card__excerpt {
+	margin: 0;
+	color: var(--color-body);
+	line-height: 1.7;
+	flex: 1 1 auto;
+}
+
+.post-card__readmore {
+	margin-top: auto;
+	font-weight: 700;
+	color: var(--color-primary);
+}
+
+@media (max-width: 767px) {
+	.blog-grid {
+		gap: var(--space-md);
+	}
 }

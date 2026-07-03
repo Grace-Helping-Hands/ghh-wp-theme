@@ -1,6 +1,8 @@
 <?php
 // Enqueue styles and scripts
 function ghh_enqueue_assets() {
+    $theme_version = wp_get_theme()->get( 'Version' );
+
     // Load Sofia Sans from Google Fonts (fallbacks provided in CSS variables)
     wp_enqueue_style( 'ghh-fonts', 'https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;600;700&display=swap', array(), null );
 
@@ -22,6 +24,7 @@ function ghh_enqueue_assets() {
     wp_enqueue_style( 'ghh-buttons', $asset_uri( '/assets/css/components/buttons.css' ), array( 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-spacings', $asset_uri( '/assets/css/components/spacing.css' ), array( 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-helpers', $asset_uri( '/assets/css/utilities/helpers.css' ), array( 'ghh-variables' ), false );
+    wp_enqueue_style( 'ghh-cards', $asset_uri( '/assets/css/components/cards.css' ), array( 'ghh-variables' ), false );
     // Main style (style.css) — use stylesheet directory for child theme support
     $style_ver = file_exists( get_stylesheet_directory() . '/style.css' ) ? filemtime( get_stylesheet_directory() . '/style.css' ) : $theme_version;
     $style_uri = get_stylesheet_uri() . '?t=' . $style_ver;
