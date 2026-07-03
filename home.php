@@ -20,7 +20,13 @@ get_header();
                             <div class="post-card__body">
                                 <span class="post-card__meta"><?php echo esc_html( get_the_date() ); ?></span>
                                 <h2 class="post-card__title"><?php the_title(); ?></h2>
-                                <p class="post-card__excerpt"><?php echo wp_trim_words( get_the_excerpt(), 30, '…' ); ?></p>
+                                <?php
+                                $post_excerpt = get_the_excerpt();
+                                if ( empty( $post_excerpt ) ) {
+                                    $post_excerpt = wp_strip_all_tags( wp_trim_words( strip_shortcodes( get_the_content( '' ) ), 30, '…' ) );
+                                }
+                                ?>
+                                <p class="post-card__excerpt"><?php echo esc_html( $post_excerpt ); ?></p>
                                 <span class="post-card__readmore"><?php esc_html_e( 'Read article', 'ghh' ); ?></span>
                             </div>
                         </a>
