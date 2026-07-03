@@ -47,14 +47,10 @@
 	--bp-xxl: 1400px;
 
 	/* Spacing */
-	--tp-sm: 20px;
-	--bp-sm: 20px;
-	--tp-md: 40px;
-	--bp-md: 40px;
-	--tp-lg: 80px;
-	--bp-lg: 80px;
-	--tp-xl: 120px;
-	--bp-xl: 120px;
+	--space-sm: 20px;
+	--space-md: 40px;
+	--space-lg: 80px;
+	--space-xl: 120px;
 
 	/* Typography */
 	--font-sans: "Sofia Sans", Inter, -apple-system, "Segoe UI", Roboto,

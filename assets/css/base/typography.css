@@ -1,3 +1,89 @@
+/* typography.css — baseline typographic rhythm and element margins */
+:root {
+	/* rely on --space-* variables defined in variables.css */
+	--fs-h1: 4rem;
+	--fs-h2: calc(var(--fs-h1) * 0.75);
+	--fs-h3: calc(var(--fs-h1) * 0.5625);
+	--fs-h4: calc(var(--fs-h1) * 0.421875);
+	--fs-h5: calc(var(--fs-h1) * 0.31640625);
+	--fs-h6: calc(var(--fs-h1) * 0.2373046875);
+}
+
+html {
+	font-family: var(--font-sans);
+	color: var(--color-body);
+	line-height: 1.5;
+}
+
+/* Headings: keep compact top, clear bottom rhythm */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0 0 var(--space-md);
+	color: var(--color-heading);
+	line-height: 1.1;
+}
+
+h1 {
+	font-size: var(--fs-h1);
+}
+h2 {
+	font-size: var(--fs-h2);
+}
+h3 {
+	font-size: var(--fs-h3);
+}
+
+/* Paragraphs and flow content */
+p {
+	margin: 0 0 var(--space-sm);
+}
+
+/* Lists */
+ul,
+ol {
+	margin: 0 0 var(--space-md) 1.25rem;
+	padding: 0;
+}
+
+/* Figures */
+figure {
+	margin: 0 0 var(--space-md);
+}
+figcaption {
+	font-size: 0.9rem;
+	color: var(--color-gray);
+}
+
+/* Blockquotes */
+blockquote {
+	margin: 0 0 var(--space-md);
+	padding-left: 1rem;
+	border-left: 4px solid var(--color-light-gray);
+	color: var(--color-dark-gray);
+}
+
+/* Images and media */
+img,
+video,
+iframe {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Small print */
+small {
+	font-size: 0.85em;
+}
+
+/* Utility: reduce default spacing inside compact components */
+.typography--compact p {
+	margin-bottom: calc(var(--space-md) / 2);
+}
 /* typography.css placeholder */
 body {
 	line-height: 1.5;

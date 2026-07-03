@@ -1,27 +1,148 @@
 .py-sm {
-	padding-top: var(--tp-sm);
-	padding-bottom: var(--bp-sm);
+	padding-top: var(--space-sm);
+	padding-bottom: var(--space-sm);
 }
 
 .py-md {
-	padding-top: var(--tp-md);
-	padding-bottom: var(--bp-md);
+	padding-top: var(--space-md);
+	padding-bottom: var(--space-md);
 }
 
 .py-lg {
-	padding-top: var(--tp-lg);
-	padding-bottom: var(--bp-lg);
+	padding-top: var(--space-lg);
+	padding-bottom: var(--space-lg);
 }
 
 .py-xl {
-	padding-top: var(--tp-xl);
-	padding-bottom: var(--bp-xl);
+	padding-top: var(--space-xl);
+	padding-bottom: var(--space-xl);
 }
 
 .pb-md {
-	padding-bottom: var(--bp-md);
+	padding-bottom: var(--space-md);
 }
 
 .p-md {
-	padding: var(--tp-md);
+	padding: var(--space-md);
+}
+
+/* Margin utility classes */
+.m-0 {
+	margin: 0;
+}
+.mt-0,
+.mr-0,
+.mb-0,
+.ml-0,
+.mx-0,
+.my-0 {
+	margin: 0;
+}
+
+.m-sm {
+	margin: var(--space-sm);
+}
+.mt-sm {
+	margin-top: var(--space-sm);
+}
+.mr-sm {
+	margin-right: var(--space-sm);
+}
+.mb-sm {
+	margin-bottom: var(--space-sm);
+}
+.ml-sm {
+	margin-left: var(--space-sm);
+}
+.mx-sm {
+	margin-left: var(--space-sm);
+	margin-right: var(--space-sm);
+}
+.my-sm {
+	margin-top: var(--space-sm);
+	margin-bottom: var(--space-sm);
+}
+
+.m-md {
+	margin: var(--space-md);
+}
+.mt-md {
+	margin-top: var(--space-md);
+}
+.mr-md {
+	margin-right: var(--space-md);
+}
+.mb-md {
+	margin-bottom: var(--space-md);
+}
+.ml-md {
+	margin-left: var(--space-md);
+}
+.mx-md {
+	margin-left: var(--space-md);
+	margin-right: var(--space-md);
+}
+.my-md {
+	margin-top: var(--space-md);
+	margin-bottom: var(--space-md);
+}
+
+.m-lg {
+	margin: var(--space-lg);
+}
+.mt-lg {
+	margin-top: var(--space-lg);
+}
+.mr-lg {
+	margin-right: var(--space-lg);
+}
+.mb-lg {
+	margin-bottom: var(--space-lg);
+}
+.ml-lg {
+	margin-left: var(--space-lg);
+}
+.mx-lg {
+	margin-left: var(--space-lg);
+	margin-right: var(--space-lg);
+}
+.my-lg {
+	margin-top: var(--space-lg);
+	margin-bottom: var(--space-lg);
+}
+
+.m-xl {
+	margin: var(--space-xl);
+}
+.mt-xl {
+	margin-top: var(--space-xl);
+}
+.mr-xl {
+	margin-right: var(--space-xl);
+}
+.mb-xl {
+	margin-bottom: var(--space-xl);
+}
+.ml-xl {
+	margin-left: var(--space-xl);
+}
+.mx-xl {
+	margin-left: var(--space-xl);
+	margin-right: var(--space-xl);
+}
+.my-xl {
+	margin-top: var(--space-xl);
+	margin-bottom: var(--space-xl);
+}
+
+.m-auto {
+	margin: auto;
+}
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
+.my-auto {
+	margin-top: auto;
+	margin-bottom: auto;
 }

@@ -16,7 +16,9 @@ function ghh_enqueue_assets() {
     wp_enqueue_style( 'ghh-reset', $asset_uri( '/assets/css/base/reset.css' ), array(), false );
     // Theme CSS variables (must load before other theme styles)
     wp_enqueue_style( 'ghh-variables', $asset_uri( '/assets/css/base/variables.css' ), array( 'ghh-fonts', 'ghh-reset' ), false );
-    wp_enqueue_style( 'ghh-backgrounds', $asset_uri( '/assets/css/components/backgrounds.css' ), array( 'ghh-variables' ), false );
+    // Typography baseline (paragraph/heading/list margins)
+    wp_enqueue_style( 'ghh-typography', $asset_uri( '/assets/css/base/typography.css' ), array( 'ghh-variables' ), false );
+    wp_enqueue_style( 'ghh-backgrounds', $asset_uri( '/assets/css/components/backgrounds.css' ), array( 'ghh-typography' ), false );
     wp_enqueue_style( 'ghh-buttons', $asset_uri( '/assets/css/components/buttons.css' ), array( 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-spacings', $asset_uri( '/assets/css/components/spacing.css' ), array( 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-helpers', $asset_uri( '/assets/css/utilities/helpers.css' ), array( 'ghh-variables' ), false );
