@@ -21,3 +21,7 @@
 .pb-md {
 	padding-bottom: var(--bp-md);
 }
+
+.p-md {
+	padding: var(--tp-md);
+}

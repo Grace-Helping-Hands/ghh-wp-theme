@@ -29,3 +29,8 @@ iframe {
 	padding: 0;
 	border: 0;
 }
+
+/* remove default margin */
+*:not(dialog) {
+	margin: 0;
+}
