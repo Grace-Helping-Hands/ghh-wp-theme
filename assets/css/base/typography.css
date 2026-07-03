@@ -22,19 +22,39 @@ h3,
 h4,
 h5,
 h6 {
-	margin: 0 0 var(--space-md);
+	margin: 0;
 	color: var(--color-heading);
 	line-height: 1.1;
 }
 
 h1 {
 	font-size: var(--fs-h1);
+	margin-bottom: var(--space-md);
 }
+
 h2 {
 	font-size: var(--fs-h2);
+	margin-bottom: var(--space-md);
 }
+
 h3 {
 	font-size: var(--fs-h3);
+	margin-bottom: calc(var(--space-md) * 0.85);
+}
+
+h4 {
+	font-size: var(--fs-h4);
+	margin-bottom: calc(var(--space-md) * 0.7);
+}
+
+h5 {
+	font-size: var(--fs-h5);
+	margin-bottom: var(--space-sm);
+}
+
+h6 {
+	font-size: var(--fs-h6);
+	margin-bottom: var(--space-sm);
 }
 
 /* Paragraphs and flow content */
