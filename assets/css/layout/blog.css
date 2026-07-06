@@ -1,0 +1,32 @@
+/* blog.css — blog listing grid layout */
+.blog-grid {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: var(--space-md);
+	margin: 0 auto;
+	padding: 0;
+	list-style: none;
+	align-items: stretch;
+	grid-auto-rows: 1fr;
+	width: 100%;
+}
+
+.page-excerpt {
+	font-size: 1.125rem;
+	color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+	.blog-grid {
+		grid-template-columns: repeat(2, 1fr);
+		max-width: 900px;
+		gap: var(--space-sm);
+	}
+}
+
+@media (min-width: 1200px) {
+	.blog-grid {
+		grid-template-columns: repeat(3, 1fr);
+		max-width: 1200px;
+	}
+}
