@@ -28,7 +28,7 @@ get_header();
                                 }
                                 ?>
                                 <p class="post-card__excerpt"><?php echo esc_html( $post_excerpt ); ?></p>
-                                <span class="post-card__readmore"><?php esc_html_e( 'Read article', 'ghh' ); ?></span>
+                                <!-- <span class="post-card__readmore"><#?php esc_html_e( 'Read article', 'ghh' ); ?></span> -->
                             </div>
                         </a>
                     </article>
