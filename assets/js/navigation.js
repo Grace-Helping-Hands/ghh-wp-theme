@@ -6,6 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
 	var menu = document.getElementById("primary-menu");
 	if (!button || !menu) return;
 
+	// Add chevron indicators to menu items with children
+	var submenuParents = nav.querySelectorAll(".menu-item-has-children > a");
+	submenuParents.forEach(function (link) {
+		var chevron = document.createElement("span");
+		chevron.className = "menu-chevron";
+		chevron.setAttribute("aria-hidden", "true");
+		link.appendChild(chevron);
+	});
+
 	function openMenu() {
 		button.classList.add("is-open");
 		button.setAttribute("aria-expanded", "true");
@@ -21,15 +30,25 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	button.addEventListener("click", function (e) {
-		e.stopPropagation();
+		console.log(
+			"Button clicked, current expanded state:",
+			this.getAttribute("aria-expanded")
+		);
 		var expanded = this.getAttribute("aria-expanded") === "true";
-		if (expanded) closeMenu();
-		else openMenu();
+		if (expanded) {
+			console.log("Closing menu");
+			closeMenu();
+		} else {
+			console.log("Opening menu");
+			openMenu();
+		}
 	});
 
-	// Close when clicking outside the nav
+	// Close when clicking outside the nav (but not the hamburger button)
 	document.addEventListener("click", function (e) {
 		if (!nav.classList.contains("toggled")) return;
+		// Don't close if clicking the menu toggle button
+		if (button.contains(e.target)) return;
 		if (!nav.contains(e.target)) closeMenu();
 	});
 
@@ -51,9 +70,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	// Desktop submenu interactions: show on hover and focus for accessibility
-	var submenuParents = nav.querySelectorAll(".menu-item-has-children");
-
-	submenuParents.forEach(function (item) {
+	var allSubmenuParents = nav.querySelectorAll(".menu-item-has-children");
+	allSubmenuParents.forEach(function (item) {
 		item.addEventListener("mouseenter", function () {
 			if (window.innerWidth >= 993) item.classList.add("show-submenu");
 		});
