@@ -4,7 +4,7 @@ get_header();
 <main id="site-content" class="py-md">
     <section class="container">
         <header class="page-header pb-md">
-            <h1 class="page-title"><?php single_post_title( 'Blogs' ); ?></h1>
+            <h1 class="page-title"><?php single_post_title( ); ?></h1>
             <p class="page-excerpt"><?php echo esc_html( get_the_excerpt( get_queried_object_id() ) ); ?></p>
         </header>
 

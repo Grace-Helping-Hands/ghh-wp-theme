@@ -3,6 +3,6 @@
         <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
     </header>
     <div class="entry-content">
-        <?php the_excerpt(); ?>
+        <?php the_content(); ?>
     </div>
 </article>
