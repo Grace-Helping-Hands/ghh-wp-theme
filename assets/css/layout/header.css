@@ -198,7 +198,11 @@
 	transform: rotate(180deg);
 }
 
-#site-navigation .menu .menu-item-has-children.show-submenu > a .menu-chevron {
+#site-navigation .menu .menu-item-has-children:hover > a .menu-chevron {
+	transform: rotate(0deg);
+}
+
+#site-navigation.toggled .menu-item-has-children:hover > a .menu-chevron {
 	transform: rotate(0deg);
 }
 
