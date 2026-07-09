@@ -13,6 +13,18 @@ document.addEventListener("DOMContentLoaded", function () {
 		chevron.className = "menu-chevron";
 		chevron.setAttribute("aria-hidden", "true");
 		link.appendChild(chevron);
+
+		// Toggle submenu when chevron is tapped/clicked while mobile menu is open
+		chevron.addEventListener("click", function (ev) {
+			ev.preventDefault();
+			ev.stopPropagation();
+			var parent = this.closest(".menu-item-has-children");
+			if (!parent) return;
+			// Only toggle when mobile overlay is open
+			if (nav.classList.contains("toggled")) {
+				parent.classList.toggle("show-submenu");
+			}
+		});
 	});
 
 	function openMenu() {
@@ -30,16 +42,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	button.addEventListener("click", function (e) {
-		console.log(
-			"Button clicked, current expanded state:",
-			this.getAttribute("aria-expanded")
-		);
 		var expanded = this.getAttribute("aria-expanded") === "true";
 		if (expanded) {
-			console.log("Closing menu");
 			closeMenu();
 		} else {
-			console.log("Opening menu");
 			openMenu();
 		}
 	});
@@ -64,25 +70,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	// Ensure menu closes when resizing to desktop
 	window.addEventListener("resize", function () {
+		// Close mobile menu if viewport grows to desktop size
 		if (window.innerWidth >= 993 && nav.classList.contains("toggled")) {
 			closeMenu();
 		}
-	});
-
-	// Desktop submenu interactions: show on hover and focus for accessibility
-	var allSubmenuParents = nav.querySelectorAll(".menu-item-has-children");
-	allSubmenuParents.forEach(function (item) {
-		item.addEventListener("mouseenter", function () {
-			if (window.innerWidth >= 993) item.classList.add("show-submenu");
-		});
-		item.addEventListener("mouseleave", function () {
-			if (window.innerWidth >= 993) item.classList.remove("show-submenu");
-		});
-		item.addEventListener("focusin", function () {
-			if (window.innerWidth >= 993) item.classList.add("show-submenu");
-		});
-		item.addEventListener("focusout", function () {
-			if (window.innerWidth >= 993) item.classList.remove("show-submenu");
-		});
 	});
 });

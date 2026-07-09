@@ -63,18 +63,41 @@
 	display: none;
 }
 
+/* Only reveal submenus on hover/focus when the mobile overlay is open */
+#site-navigation.toggled .menu-item-has-children.show-submenu > .sub-menu,
+#site-navigation.toggled .menu-item-has-children:focus-within > .sub-menu,
+#site-navigation.toggled .menu-item-has-children:hover > .sub-menu {
+	display: flex;
+}
+
+#site-navigation.toggled .menu-item-has-children {
+	flex-direction: column;
+}
+
 @media (max-width: 992px) {
 	#site-navigation .sub-menu {
 		display: none;
-		position: static;
-		margin: 0.25rem 0 0 1rem;
-		padding-left: 1rem;
-		border-left: 2px solid rgba(0, 0, 0, 0.12);
+		flex-direction: column;
+		gap: 10px;
+		margin: 20px 0 0 0;
 	}
 
 	/* Show submenu when parent has show-submenu class (mobile) */
 	#site-navigation .menu-item-has-children.show-submenu > .sub-menu {
 		display: block;
+	}
+
+	/* When mobile overlay is open, target items with children so their
+	   links layout nicely with the chevron and are full-width for taps */
+	#site-navigation.toggled .menu .menu-item-has-children {
+		/* width: 100%; */
+	}
+
+	#site-navigation.toggled .menu .menu-item-has-children > a {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.75rem 1rem;
 	}
 }
 
@@ -230,6 +253,10 @@
 .menu-toggle.is-open .burger-meat {
 	opacity: 0;
 	transform: scaleX(0);
+}
+
+#site-navigation .is-open > .menu-main-nav-container {
+	display: block;
 }
 
 /* When toggled show menu: mobile overlay that appears below the header */
