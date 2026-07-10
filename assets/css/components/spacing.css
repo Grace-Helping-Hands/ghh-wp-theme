@@ -26,6 +26,10 @@
 	padding: var(--space-md);
 }
 
+.p-sm {
+	padding: var(--space-sm);
+}
+
 /* Margin utility classes */
 .m-0 {
 	margin: 0;
