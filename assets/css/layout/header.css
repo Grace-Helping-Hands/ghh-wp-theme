@@ -13,6 +13,13 @@
 	z-index: 10001;
 }
 
+#site-header.container {
+	width: min(100% - 40px, 1200px);
+	max-width: 1200px;
+	margin-inline: auto !important;
+	padding-inline: 0;
+}
+
 .site-branding {
 	display: flex;
 	align-items: center;
@@ -310,20 +317,23 @@
 	.site-header {
 		flex-direction: row;
 		align-items: center;
+		min-height: 125px;
 	}
 
 	#site-navigation .menu {
-		display: flex;
+		display: grid;
 		position: static;
 		transform: none;
 		left: auto;
 		top: auto;
-		flex-direction: row;
-		gap: 1rem;
+		grid-template-columns: repeat(8, max-content) 130px;
+		column-gap: clamp(0.7rem, 1vw, 1.15rem);
 		background: transparent;
 		padding: 0;
 		align-items: center;
+		justify-content: start;
 		z-index: auto;
+		width: max-content;
 	}
 
 	#site-navigation .menu .menu-item-has-children:hover > .sub-menu,
@@ -350,14 +360,15 @@
 		top: 100%;
 	}
 
-	#site-navigation .menu > li.menu-item-28 {
-		margin-left: auto;
+	#site-navigation .menu > li.menu-item-28,
+	#site-navigation .menu > li:last-child {
+		margin-left: 0;
 		margin-top: 0;
 	}
 
 	#site-navigation .menu > li.menu-nav-icon img,
 	.menu-nav-icon img {
-		height: 100px;
+		height: 80px;
 	}
 
 	.menu-toggle {
@@ -366,10 +377,46 @@
 
 	.menu-main-nav-container {
 		order: initial;
-		width: 100%;
+		width: max-content;
+		grid-column: 2;
 	}
 
 	#site-navigation {
-		justify-content: flex-start;
+		display: grid;
+		grid-template-columns: 90px max-content;
+		align-items: center;
+		column-gap: clamp(2.2rem, 3.2vw, 3.6rem);
+		justify-content: start;
+		width: max-content;
+		margin-inline: 0;
+	}
+
+	#site-navigation > .menu-nav-icon {
+		grid-column: 1;
+	}
+
+	#site-navigation .menu > .menu-item > a {
+		font-size: clamp(0.92rem, 0.88vw, 1rem);
+		line-height: 1.15;
+		padding: 12px 0;
+		white-space: nowrap;
+	}
+
+	#site-navigation .menu > li.menu-item-28 > a,
+	#site-navigation .menu > li:last-child > a {
+		min-width: 130px;
+		width: 100%;
+		padding: 1rem 1.25rem;
+		border: 2px solid transparent;
+		border-radius: 10px;
+		background: var(--color-accent-2);
+		color: var(--color-primary);
+		text-align: center;
+	}
+
+	#site-navigation .menu > li.menu-item-28 > a:hover,
+	#site-navigation .menu > li:last-child > a:hover {
+		border-color: var(--color-primary);
+		background: var(--color-accent-2);
 	}
 }
