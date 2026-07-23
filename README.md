@@ -51,6 +51,10 @@
 - In the WordPress admin, go to `Appearance -> Themes`.
 - Activate the `ghh-theme` theme if it is not already active.
 
+## Editor handbooks
+
+- Newsletter editing and styling: `docs/newsletter-handbook.md`
+
 ## Pushing changes
 
 > Note: Pull the remote repo regularly to get the latest changes.
