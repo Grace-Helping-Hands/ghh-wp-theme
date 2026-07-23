@@ -1,1 +1,244 @@
 /* custom.css - user overrides */
+
+/* ==================================================
+   HOW WE WORK
+   ================================================== */
+
+.ghh-how-we-work {
+	--ghh-maroon: #571512;
+	--ghh-brown: #824a2b;
+	--ghh-blush: #ead5d5;
+	--ghh-yellow: #cccc63;
+	--ghh-card-background: #ffffff;
+	--ghh-text: #461312;
+
+	position: relative;
+	overflow: hidden;
+	background: var(--ghh-blush);
+	padding: clamp(70px, 9vw, 130px) 24px;
+}
+
+.ghh-how-we-work > .wp-block-group.container {
+	max-width: 1200px;
+}
+
+.ghh-how-we-work .wp-block-columns.ghh-how-we-work__inner {
+	position: relative;
+	z-index: 1;
+	display: grid !important;
+	grid-template-columns: minmax(300px, 420px) minmax(0, 650px);
+	gap: clamp(48px, 6vw, 80px);
+	align-items: start;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.ghh-how-we-work .wp-block-column {
+	flex-basis: auto !important;
+	flex-grow: 0 !important;
+	min-width: 0;
+}
+
+.ghh-how-we-work__intro {
+	position: sticky;
+	top: 130px;
+}
+
+.ghh-how-we-work__eyebrow {
+	display: inline-block;
+	margin-bottom: 16px;
+	color: var(--ghh-brown);
+	font-family: "Sofia Sans", sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.ghh-how-we-work__intro h2 {
+	margin: 0 0 24px;
+	color: var(--ghh-maroon);
+	font-size: clamp(42px, 5vw, 68px);
+	font-weight: 700;
+	line-height: 1.02;
+}
+
+.ghh-how-we-work__intro p {
+	max-width: 500px;
+	margin: 0;
+	color: var(--ghh-text);
+	font-size: clamp(18px, 1.5vw, 21px);
+	line-height: 1.7;
+}
+
+.ghh-how-we-work__steps {
+	position: relative;
+	min-height: 720px;
+	overflow: visible;
+}
+
+.ghh-how-we-work__steps::before {
+	display: none;
+}
+
+.ghh-how-we-work__step {
+	position: absolute;
+	box-sizing: border-box;
+	display: grid;
+	place-items: center;
+	width: 400px;
+	min-height: 330px;
+	padding: 46px 54px;
+	border: 0;
+	border-radius: 0;
+	background: var(--ghh-card-background);
+	box-shadow: none;
+	text-align: center;
+	z-index: 1;
+}
+
+.ghh-how-we-work__step:nth-child(1) {
+	top: 0;
+	left: 110px;
+	background: var(--ghh-maroon);
+	color: #ffffff;
+}
+
+.ghh-how-we-work__step:nth-child(2) {
+	top: 270px;
+	left: 230px;
+	background: #ffffff;
+	color: var(--ghh-text);
+	z-index: 3;
+}
+
+.ghh-how-we-work__step:nth-child(3) {
+	top: 325px;
+	left: -125px;
+	background: var(--ghh-yellow);
+	color: var(--ghh-text);
+	z-index: 5;
+}
+
+.ghh-how-we-work__step h3 {
+	margin: 0 0 32px;
+	color: inherit;
+	font-size: clamp(24px, 2.2vw, 34px);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.ghh-how-we-work__step p {
+	margin: 0;
+	color: inherit;
+	font-size: clamp(18px, 1.3vw, 22px);
+	font-weight: 600;
+	line-height: 1.55;
+}
+
+/* ==================================================
+   SCROLL ANIMATION
+   ================================================== */
+
+.ghh-reveal {
+	opacity: 0;
+	transition:
+		opacity 750ms ease,
+		transform 750ms cubic-bezier(0.22, 1, 0.36, 1);
+	transition-delay: var(--ghh-delay, 0ms);
+	will-change: opacity, transform;
+}
+
+.ghh-reveal--left {
+	transform: translateX(-45px);
+}
+
+.ghh-reveal--right {
+	transform: translateX(55px);
+}
+
+.ghh-reveal.is-visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+/* ==================================================
+   TABLET AND MOBILE
+   ================================================== */
+
+@media (max-width: 1420px) {
+	.ghh-how-we-work .wp-block-columns.ghh-how-we-work__inner {
+		grid-template-columns: 1fr;
+		gap: 48px;
+	}
+
+	.ghh-how-we-work__intro {
+		position: static;
+	}
+
+	.ghh-how-we-work__intro p {
+		max-width: 700px;
+	}
+
+	.ghh-how-we-work__steps {
+		min-height: 0;
+	}
+
+	.ghh-how-we-work__step,
+	.ghh-how-we-work__step:nth-child(1),
+	.ghh-how-we-work__step:nth-child(2),
+	.ghh-how-we-work__step:nth-child(3) {
+		position: relative;
+		top: auto;
+		right: auto;
+		left: auto;
+		width: 100%;
+		min-height: 0;
+		margin-top: 18px;
+	}
+}
+
+@media (max-width: 600px) {
+	.ghh-how-we-work {
+		padding: 64px 18px;
+	}
+
+	.ghh-how-we-work__intro h2 {
+		font-size: 42px;
+	}
+
+	.ghh-how-we-work__steps {
+		gap: 18px;
+	}
+
+	.ghh-how-we-work__step {
+		padding: 26px 22px;
+	}
+
+	.ghh-how-we-work__step h3 {
+		margin-top: 0;
+		font-size: 26px;
+	}
+
+	.ghh-how-we-work__step p {
+		font-size: 17px;
+	}
+
+	.ghh-reveal--left,
+	.ghh-reveal--right {
+		transform: translateY(35px);
+	}
+
+	.ghh-reveal.is-visible {
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ghh-reveal {
+		opacity: 1;
+		transform: none;
+		transition: none;
+	}
+}
