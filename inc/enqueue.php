@@ -42,7 +42,14 @@ function ghh_enqueue_assets() {
     // Footer styles
     wp_enqueue_style( 'ghh-footer', $asset_uri( '/assets/css/layout/footer.css' ), array( 'ghh-main' ), false );
     
-    wp_enqueue_script( 'ghh-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), '1.0', true );
+    $theme_script_path = get_template_directory() . '/assets/js/theme.js';
+    wp_enqueue_script(
+        'ghh-theme',
+        get_template_directory_uri() . '/assets/js/theme.js',
+        array(),
+        file_exists( $theme_script_path ) ? filemtime( $theme_script_path ) : '1.0',
+        true
+    );
     // Navigation behavior (mobile toggle + desktop submenu)
     wp_enqueue_script( 'ghh-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '1.0', true );
 }
