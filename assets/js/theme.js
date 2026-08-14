@@ -84,7 +84,44 @@
 	}
 
 	function initThemeEnhancements() {
+		setupAnnouncementBanner();
 		setupOurServicesSection();
+	}
+
+	function setupAnnouncementBanner() {
+		var banner = document.querySelector(".site-announcement");
+
+		if (!banner) {
+			return;
+		}
+
+		var bannerId = banner.getAttribute("data-announcement-id") || "default";
+		var storageKey = "ghh-announcement-dismissed-" + bannerId;
+
+		try {
+			if (window.localStorage.getItem(storageKey) === "true") {
+				banner.hidden = true;
+				return;
+			}
+		} catch (error) {
+			// Continue without persistence when storage is unavailable.
+		}
+
+		var closeButton = banner.querySelector(".site-announcement__close");
+
+		if (!closeButton) {
+			return;
+		}
+
+		closeButton.addEventListener("click", function () {
+			banner.hidden = true;
+
+			try {
+				window.localStorage.setItem(storageKey, "true");
+			} catch (error) {
+				// Dismiss visually even when storage is unavailable.
+			}
+		});
 	}
 
 	if (document.readyState === "loading") {
