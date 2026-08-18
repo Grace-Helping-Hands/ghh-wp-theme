@@ -3,6 +3,8 @@
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=oOytRyoev7vHl8Rv
+"></script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
