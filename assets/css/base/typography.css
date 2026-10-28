@@ -11,7 +11,7 @@
 
 html {
 	font-family: var(--font-sans);
-	color: var(--color-body);
+	color: var(--text-color-body);
 	line-height: 1.5;
 }
 
@@ -23,7 +23,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
-	color: var(--color-heading);
+	color: var(--text-color-heading);
 	line-height: 1.1;
 }
 
@@ -110,7 +110,7 @@ body {
 }
 h1 {
 	font-family: "Sofia Sans", sans-serif !important;
-	color: var(--color-heading);
+	color: var(--text-color-heading);
 }
 h2,
 h3,

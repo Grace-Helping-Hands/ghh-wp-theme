@@ -9,6 +9,20 @@
 	--color-accent-2: #c9c769;
 	--color-accent-dark: #b88e20;
 	--color-accent-light: #e8c867;
+	--color-accent-green: #286E60;
+	--color-accent-berry: #883A64;
+
+	/* Secondary brand: Green */
+	--green-50: #EDF5F2;
+	--green-100: #D7E9E2;
+	--green-200: #B7D7CC;
+	--green-300: #91C0B1;
+	--green-400: #69A995;
+	--green-500: #438B78;
+	--green-600: #286E60;
+	--green-700: #20594D;
+	--green-800: #174539;
+	--green-900: #103329;
 
 	/* Neutrals */
 	--color-white: #ffffff;
@@ -20,16 +34,26 @@
 	--color-transparent: #00000000;
 
 	/* Typography */
-	--color-heading: #461312;
-	--color-body: #4b5563;
-	--color-link: var(--color-primary);
+	--text-color-heading: #40152c;
+	--text-color-body: #30212B;
+	--text-color-link: #702C50;
+  	--text-color-secondary: #51464D;
+ 	--text-color-muted: #6B6268;
+  	--text-color-inverse: #FFFFFF;
+
+	/* Surfaces */
+  	--surface-page: #FFFFFF;
+  	--surface-subtle: #FAF8F9;
+  	--surface-berry: #F8EFF4;
+  	--surface-green: #EDF5F2;
+  	--border-default: #E7DFE4;
 
 	/* Backgrounds */
 	--color-bg: #ffffff;
 	--color-bg-alt: #f5f7f7;
 	--color-section-dark: #0f6b63;
-	--color-bg-light-1: #f0eae5;
-	--color-bg-light-2: #f0eae5;
+	--color-bg-light-berry: var(--surface-berry);
+	--color-bg-light-green: var(--surface-green);
 	--color-bg-dark-1: #edd7d7;
 	--color-bg-dark-2: #461312;
 
