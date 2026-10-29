@@ -1,16 +1,17 @@
 /* variables.css placeholder */
 :root {
-	/* Brand Colors */
-	--color-primary: #461312; /* Grace Helping Hands teal */
-	--color-primary-dark: #0b544e;
-	--color-primary-light: #4f9f98;
 
-	--color-accent: #d4a62a; /* Gold */
-	--color-accent-2: #c9c769;
-	--color-accent-dark: #b88e20;
-	--color-accent-light: #e8c867;
-	--color-accent-green: #286E60;
-	--color-accent-berry: #883A64;
+	/* Primary brand: Berry */
+	--berry-50: #F8EFF4;
+	--berry-100: #F0DDE7;
+	--berry-200: #E3BFD2;
+	--berry-300: #D39AB8;
+	--berry-400: #BC7098;
+	--berry-500: #A7527F;
+	--berry-600: #883A64;
+	--berry-700: #702C50;
+	--berry-800: #59203E;
+	--berry-900: #40152C;
 
 	/* Secondary brand: Green */
 	--green-50: #EDF5F2;
@@ -23,6 +24,18 @@
 	--green-700: #20594D;
 	--green-800: #174539;
 	--green-900: #103329;
+
+	/* Brand Colors */
+	--color-primary: #461312; /* Grace Helping Hands teal */
+	--color-primary-dark: #0b544e;
+	--color-primary-light: #4f9f98;
+
+	--color-accent: #d4a62a; /* Gold */
+	--color-accent-2: #c9c769;
+	--color-accent-dark: #b88e20;
+	--color-accent-light: #e8c867;
+	--color-accent-green: #286E60;
+	--color-accent-berry: #883A64;
 
 	/* Neutrals */
 	--color-white: #ffffff;
