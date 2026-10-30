@@ -16,6 +16,9 @@ function ghh_enqueue_assets() {
 
     // Reset (global box-sizing etc.)
     wp_enqueue_style( 'ghh-reset', $asset_uri( '/assets/css/base/reset.css' ), array(), false );
+    // Main style (style.css) — use stylesheet directory for child theme support
+    $style_ver = file_exists( get_stylesheet_directory() . '/style.css' ) ? filemtime( get_stylesheet_directory() . '/style.css' ) : $theme_version;
+    $style_uri = get_stylesheet_uri() . '?t=' . $style_ver;
     // Theme CSS variables (must load before other theme styles)
     wp_enqueue_style( 'ghh-variables', $asset_uri( '/assets/css/base/variables.css' ), array( 'ghh-fonts', 'ghh-reset' ), false );
     // Typography baseline (paragraph/heading/list margins)
@@ -27,9 +30,6 @@ function ghh_enqueue_assets() {
     wp_enqueue_style( 'ghh-helpers', $asset_uri( '/assets/css/utilities/helpers.css' ), array( 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-blog', $asset_uri( '/assets/css/layout/blog.css' ), array( 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-cards', $asset_uri( '/assets/css/components/cards.css' ), array( 'ghh-blog' ), false );
-    // Main style (style.css) — use stylesheet directory for child theme support
-    $style_ver = file_exists( get_stylesheet_directory() . '/style.css' ) ? filemtime( get_stylesheet_directory() . '/style.css' ) : $theme_version;
-    $style_uri = get_stylesheet_uri() . '?t=' . $style_ver;
     wp_enqueue_style( 'ghh-style', $style_uri, array( 'ghh-fonts', 'ghh-variables' ), false );
     wp_enqueue_style( 'ghh-containers', $asset_uri( '/assets/css/layout/containers.css' ), array( 'ghh-style' ), false );
     wp_enqueue_style( 'ghh-header', $asset_uri( '/assets/css/layout/header.css' ), array( 'ghh-containers' ), false );

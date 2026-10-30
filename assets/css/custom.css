@@ -8,7 +8,7 @@
 }
 
 .newsletter-page {
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 	background: #fff;
 	border-top: 1px solid rgba(70, 19, 18, 0.12);
 }
@@ -23,14 +23,14 @@
 	font-size: clamp(2.75rem, 5vw, 4.25rem);
 	line-height: 1;
 	letter-spacing: 0;
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 }
 
 .newsletter-page__body {
 	margin-top: 34px;
 	font-size: 1.05rem;
 	line-height: 1.55;
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 }
 
 .newsletter-page__body > * {
@@ -69,7 +69,7 @@
 	margin: 0 0 14px;
 	font-size: 1.45rem;
 	line-height: 1.2;
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 }
 
 .newsletter-page__body .wp-block-group p {
@@ -79,10 +79,10 @@
 .newsletter-page__body .wp-block-button__link {
 	width: 100%;
 	padding: 12px 20px;
-	border: 1.5px solid var(--color-primary);
+	border: 2px solid var(--berry-600);
 	border-radius: 5px;
 	background: transparent;
-	color: var(--color-primary);
+	color: var(--berry-900);
 	font-weight: 800;
 	font-size: 1rem;
 	text-align: center;
@@ -136,7 +136,7 @@
 	display: grid;
 	height: 100%;
 	place-items: center;
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 	font-size: 1.1rem;
 	font-weight: 800;
 }
@@ -149,7 +149,7 @@
 .newsletter-card__date {
 	display: block;
 	margin-bottom: 8px;
-	color: #9b000b;
+	color: var(--color-accent-green);
 	font-size: 0.85rem;
 	font-weight: 700;
 	letter-spacing: 0.04em;
@@ -157,7 +157,7 @@
 
 .newsletter-card__title {
 	margin: 0 0 8px;
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 	font-size: clamp(1.25rem, 1.8vw, 1.5rem);
 	line-height: 1.2;
 	letter-spacing: 0;
@@ -165,7 +165,7 @@
 
 .newsletter-card__summary {
 	max-width: 760px;
-	color: var(--color-primary);
+	color: var(--text-color-body);
 	font-size: 1rem;
 	line-height: 1.4;
 }
@@ -184,9 +184,9 @@
 	width: min(100%, 170px);
 	min-height: 44px;
 	padding: 9px 14px;
-	border: 1.5px solid var(--color-primary);
+	border: 2px solid var(--berry-600);
 	border-radius: 5px;
-	color: var(--color-primary);
+	color: var(--berry-600);
 	font-size: 0.95rem;
 	font-weight: 800;
 	text-decoration: none;
@@ -261,7 +261,7 @@
 .newsletter-single__content {
 	font-size: 1.2rem;
 	line-height: 1.7;
-	color: var(--color-primary);
+	/* color: var(--color-primary); */
 }
 
 @media (max-width: 1100px) {
