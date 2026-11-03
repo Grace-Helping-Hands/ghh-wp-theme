@@ -9,3 +9,12 @@
 .bg-dark-1 {
 	background-color: var(--color-bg-dark-1);
 }
+
+.bg-light-green {
+	background-color: var(--color-bg-light-green);
+}
+
+.bg-light-berry {
+	background-color: var(--color-bg-light-berry);
+}
+

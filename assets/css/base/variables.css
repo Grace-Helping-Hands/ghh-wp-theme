@@ -35,7 +35,9 @@
 	--color-accent-dark: #b88e20;
 	--color-accent-light: #e8c867;
 	--color-accent-green: #286E60;
+	 --color-accent-green-hover: #1F594E;
 	--color-accent-berry: #883A64;
+	--color-accent-berry-hover: #70304F;
 
 	/* Neutrals */
 	--color-white: #ffffff;
@@ -72,6 +74,14 @@
 
 	/* Buttons */
 	--color-brand-1: #df804d;
+
+	/* Link sizing */
+  --link-font-size: 1rem;
+  --link-font-weight: 500;
+  --link-line-height: 1.5;
+
+  /* Link behavior */
+  --link-transition: text-decoration-color 150ms ease;
 
 	/* Borders */
 	--color-border: #dfe5e8;

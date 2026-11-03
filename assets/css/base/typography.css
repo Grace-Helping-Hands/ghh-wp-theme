@@ -120,3 +120,11 @@ h6 {
 	font-weight: 600;
 	font-family: var(--font-sans);
 }
+
+.text-accent-green {
+	color: var(--color-accent-green)
+}
+
+.text-accent-berry {
+	color: var(--color-accent-berry)
+}
