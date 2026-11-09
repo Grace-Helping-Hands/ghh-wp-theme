@@ -47,7 +47,7 @@
                 </a></div>
                 <div>
                      <address class="footer-contact">
-                    <p><a href="mailto:volunteer@gracehelpinghands.org">volunteer@gracehelpinghands.org</a></p>
+                    <p><a href="mailto:info@gracehelpinghands.org">info@gracehelpinghands.org</a></p>
                     <p>EIN:  99-1834022</p>
                 </address>
                 <p>Donate to us through the  <a href="https://cfcgiving.opm.gov/welcome">Combined Federal Campaign (CFC)</a> using our Charity Code&nbsp;#27498</p>
