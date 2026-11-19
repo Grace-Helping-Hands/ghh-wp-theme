@@ -1,4 +1,7 @@
-/* variables.css placeholder */
+/*
+	* variables.css — design tokens. Every other stylesheet reads colors, spacing and
+	* fonts from here. The block editor palette (inc/setup.php) mirrors these values.
+	*/
 :root {
 
 	/* Primary brand: Berry */
@@ -25,17 +28,29 @@
 	--green-800: #174539;
 	--green-900: #103329;
 
+	/* Accent: Honey gold — labels, highlights. Use dark text on it (berry-900 = 7.9:1);
+	   white text on gold fails contrast. gold-800 is the gold to use for text on white. */
+	--gold-50: #FBF1D6;
+	--gold-500: #E3B23C;
+	--gold-800: #7A5A0E;
+
+	/* Accent: Apricot — soft second accent (replaces orange). Dark text only. */
+	--apricot-50: #FDEBD9;
+	--apricot-500: #F2A65A;
+	--apricot-800: #8C4A14;
+
+	/* Warm neutral section background (replaces blush in new designs). */
+	--cream: #FBF3E4;
+
 	/* Brand Colors */
-	--color-primary: #461312; /* Grace Helping Hands teal */
-	--color-primary-dark: #0b544e;
-	--color-primary-light: #4f9f98;
+	--color-primary: #461312; /* Brand brown */
 
 	--color-accent: #d4a62a; /* Gold */
 	--color-accent-2: #c9c769;
 	--color-accent-dark: #b88e20;
 	--color-accent-light: #e8c867;
 	--color-accent-green: #286E60;
-	 --color-accent-green-hover: #1F594E;
+	--color-accent-green-hover: #1F594E;
 	--color-accent-berry: #883A64;
 	--color-accent-berry-hover: #70304F;
 
@@ -52,21 +67,19 @@
 	--text-color-heading: #40152c;
 	--text-color-body: #30212B;
 	--text-color-link: #702C50;
-  	--text-color-secondary: #51464D;
- 	--text-color-muted: #6B6268;
-  	--text-color-inverse: #FFFFFF;
+	--text-color-secondary: #51464D;
+	--text-color-muted: #6B6268;
+	--text-color-inverse: #FFFFFF;
 
 	/* Surfaces */
-  	--surface-page: #FFFFFF;
-  	--surface-subtle: #FAF8F9;
-  	--surface-berry: #F8EFF4;
-  	--surface-green: #EDF5F2;
-  	--border-default: #E7DFE4;
+	--surface-page: #FFFFFF;
+	--surface-subtle: #FAF8F9;
+	--surface-berry: #F8EFF4;
+	--surface-green: #EDF5F2;
+	--border-default: #E7DFE4;
 
 	/* Backgrounds */
 	--color-bg: #ffffff;
-	--color-bg-alt: #f5f7f7;
-	--color-section-dark: #0f6b63;
 	--color-bg-light-berry: var(--surface-berry);
 	--color-bg-light-green: var(--surface-green);
 	--color-bg-dark-1: #edd7d7;
@@ -76,22 +89,18 @@
 	--color-brand-1: #df804d;
 
 	/* Link sizing */
-  --link-font-size: 1rem;
-  --link-font-weight: 500;
-  --link-line-height: 1.5;
+	--link-font-size: 1rem;
+	--link-font-weight: 500;
+	--link-line-height: 1.5;
 
-  /* Link behavior */
-  --link-transition: text-decoration-color 150ms ease;
+	/* Link behavior */
+	--link-transition: text-decoration-color 150ms ease;
 
 	/* Borders */
 	--color-border: #dfe5e8;
 
-	/* Breakpoints */
-	--bp-sm: 576px;
-	--bp-md: 768px;
-	--bp-lg: 992px;
-	--bp-xl: 1200px;
-	--bp-xxl: 1400px;
+	/* Breakpoints: CSS variables can't be used inside @media, so the
+	stylesheets use these literal values: 600px, 768px, 992px, 1100px, 1200px. */
 
 	/* Spacing */
 	--space-sm: 20px;

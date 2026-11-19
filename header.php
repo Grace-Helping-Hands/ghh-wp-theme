@@ -1,14 +1,21 @@
+<?php
+/**
+ * Site header (opens <html>, <head>, <body>).
+ *
+ * @package ghh
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script async src="https://widgets.givebutter.com/latest.umd.cjs?acct=oOytRyoev7vHl8Rv
-"></script>
 <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php wp_body_open(); ?>
 <header id="site-header" class="container">
-    <?php //get_template_part( 'template-parts/header/branding' ); ?>
-    <?php get_template_part( 'template-parts/header/navigation' ); ?>
+	<?php get_template_part( 'template-parts/header/navigation' ); ?>
 </header>

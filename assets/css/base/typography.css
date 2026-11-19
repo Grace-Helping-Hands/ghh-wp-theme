@@ -1,4 +1,4 @@
-/* typography.css — baseline typographic rhythm and element margins */
+/* typography.css — base text styles, heading scale and element margins */
 :root {
 	/* rely on --space-* variables defined in variables.css */
 	--fs-h1: 4rem;
@@ -9,10 +9,14 @@
 	--fs-h6: calc(var(--fs-h1) * 0.2373046875);
 }
 
-html {
+html,
+body {
 	font-family: var(--font-sans);
-	color: var(--text-color-body);
 	line-height: 1.5;
+}
+
+html {
+	color: var(--text-color-body);
 }
 
 /* Headings: keep compact top, clear bottom rhythm */
@@ -23,8 +27,17 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	font-family: var(--font-sans);
 	color: var(--text-color-heading);
 	line-height: 1.1;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: 600;
 }
 
 h1 {
@@ -103,28 +116,12 @@ small {
 .typography--compact p {
 	margin-bottom: calc(var(--space-md) / 2);
 }
-/* typography.css placeholder */
-body {
-	line-height: 1.5;
-	font-family: var(--font-sans);
-}
-h1 {
-	font-family: "Sofia Sans", sans-serif !important;
-	color: var(--text-color-heading);
-}
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 600;
-	font-family: var(--font-sans);
-}
 
+/* Text color helpers */
 .text-accent-green {
-	color: var(--color-accent-green)
+	color: var(--color-accent-green);
 }
 
 .text-accent-berry {
-	color: var(--color-accent-berry)
+	color: var(--color-accent-berry);
 }

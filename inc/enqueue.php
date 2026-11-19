@@ -1,50 +1,113 @@
 <?php
-// Enqueue styles and scripts
+/**
+ * Front-end styles and scripts.
+ *
+ * Stylesheets are plain CSS (no build step — WP Pusher deploys the repo as-is).
+ * Each file is versioned with its modification time so browsers pick up
+ * changes immediately after a deploy.
+ *
+ * ORDER MATTERS: later files override earlier ones. Global styles first, then
+ * layout, then page-specific files, then the footer.
+ *
+ * @package ghh
+ */
+
+defined( 'ABSPATH' ) || exit;
+
+/**
+ * Givebutter account ID used by the donation widgets embedded in page content.
+ */
+const GHH_GIVEBUTTER_ACCOUNT = 'oOytRyoev7vHl8Rv';
+
+/**
+ * Enqueue a theme stylesheet by path, versioned by modification time.
+ *
+ * @param string   $handle Handle without the "ghh-" prefix.
+ * @param string   $path   Path from the theme root.
+ * @param string[] $deps   Dependencies (full handles).
+ */
+function ghh_enqueue_style( $handle, $path, $deps = array() ) {
+	wp_enqueue_style( 'ghh-' . $handle, get_template_directory_uri() . '/' . $path, $deps, ghh_asset_version( $path ) );
+}
+
+/**
+ * Enqueue front-end assets.
+ */
 function ghh_enqueue_assets() {
-    $theme_version = wp_get_theme()->get( 'Version' );
+	// Sofia Sans is served by WordPress (Appearance -> Editor -> Styles -> Typography -> Fonts), not by the theme.
 
-    // Load Sofia Sans from Google Fonts (fallbacks provided in CSS variables)
-    wp_enqueue_style( 'ghh-fonts', 'https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@300;400;600;700&display=swap', array(), null );
+	// 1. Base: reset, design tokens, typography.
+	ghh_enqueue_style( 'reset', 'assets/css/base/reset.css' );
+	ghh_enqueue_style( 'variables', 'assets/css/base/variables.css', array( 'ghh-reset' ) );
+	ghh_enqueue_style( 'typography', 'assets/css/base/typography.css', array( 'ghh-variables' ) );
 
-    // Helper: return asset URI with timestamp query parameter (?t=timestamp)
-    $asset_uri = function( $relative_path ) {
-        $file_path = get_template_directory() . $relative_path;
-        $uri = get_template_directory_uri() . $relative_path;
-        $ver = file_exists( $file_path ) ? filemtime( $file_path ) : time();
-        return $uri . '?t=' . $ver;
-    };
+	// 2. Components + utilities used by page content (editors apply these classes to blocks).
+	ghh_enqueue_style( 'backgrounds', 'assets/css/components/backgrounds.css', array( 'ghh-typography' ) );
+	ghh_enqueue_style( 'buttons', 'assets/css/components/buttons.css', array( 'ghh-variables' ) );
+	ghh_enqueue_style( 'cta', 'assets/css/components/cta.css', array( 'ghh-buttons' ) );
+	ghh_enqueue_style( 'spacings', 'assets/css/components/spacing.css', array( 'ghh-variables' ) );
+	ghh_enqueue_style( 'forms', 'assets/css/components/forms.css', array( 'ghh-variables' ) );
+	ghh_enqueue_style( 'helpers', 'assets/css/utilities/helpers.css', array( 'ghh-variables' ) );
 
-    // Reset (global box-sizing etc.)
-    wp_enqueue_style( 'ghh-reset', $asset_uri( '/assets/css/base/reset.css' ), array(), false );
-    // Main style (style.css) — use stylesheet directory for child theme support
-    $style_ver = file_exists( get_stylesheet_directory() . '/style.css' ) ? filemtime( get_stylesheet_directory() . '/style.css' ) : $theme_version;
-    $style_uri = get_stylesheet_uri() . '?t=' . $style_ver;
-    // Theme CSS variables (must load before other theme styles)
-    wp_enqueue_style( 'ghh-variables', $asset_uri( '/assets/css/base/variables.css' ), array( 'ghh-fonts', 'ghh-reset' ), false );
-    // Typography baseline (paragraph/heading/list margins)
-    wp_enqueue_style( 'ghh-typography', $asset_uri( '/assets/css/base/typography.css' ), array( 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-backgrounds', $asset_uri( '/assets/css/components/backgrounds.css' ), array( 'ghh-typography' ), false );
-    wp_enqueue_style( 'ghh-buttons', $asset_uri( '/assets/css/components/buttons.css' ), array( 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-spacings', $asset_uri( '/assets/css/components/spacing.css' ), array( 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-forms', $asset_uri( '/assets/css/components/forms.css' ), array( 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-helpers', $asset_uri( '/assets/css/utilities/helpers.css' ), array( 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-blog', $asset_uri( '/assets/css/layout/blog.css' ), array( 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-cards', $asset_uri( '/assets/css/components/cards.css' ), array( 'ghh-blog' ), false );
-    wp_enqueue_style( 'ghh-style', $style_uri, array( 'ghh-fonts', 'ghh-variables' ), false );
-    wp_enqueue_style( 'ghh-containers', $asset_uri( '/assets/css/layout/containers.css' ), array( 'ghh-style' ), false );
-    wp_enqueue_style( 'ghh-header', $asset_uri( '/assets/css/layout/header.css' ), array( 'ghh-containers' ), false );
-    wp_enqueue_style( 'ghh-main', $asset_uri( '/assets/css/custom.css' ), array( 'ghh-header' ), false );
+	// Blog listing cards (home.php, archives, search).
+	if ( is_home() || is_archive() || is_search() ) {
+		ghh_enqueue_style( 'blog', 'assets/css/layout/blog.css', array( 'ghh-variables' ) );
+		ghh_enqueue_style( 'cards', 'assets/css/components/cards.css', array( 'ghh-blog' ) );
+	}
 
-    if ( is_singular( 'post' ) ) {
-        wp_enqueue_style( 'ghh-post', $asset_uri( '/assets/css/layout/post.css' ), array( 'ghh-main' ), false );
-    }
+	// 3. Theme stylesheet (style.css header + body defaults) and global layout.
+	ghh_enqueue_style( 'style', 'style.css', array( 'ghh-variables' ) );
+	ghh_enqueue_style( 'containers', 'assets/css/layout/containers.css', array( 'ghh-style' ) );
+	ghh_enqueue_style( 'header', 'assets/css/layout/header.css', array( 'ghh-containers' ) );
 
-    wp_enqueue_style( 'ghh-hero', $asset_uri( '/assets/css/layout/hero.css' ), array( 'ghh-main' ), false );
-    // Footer styles
-    wp_enqueue_style( 'ghh-footer', $asset_uri( '/assets/css/layout/footer.css' ), array( 'ghh-main' ), false );
-    
-    wp_enqueue_script( 'ghh-theme', get_template_directory_uri() . '/assets/js/theme.js', array(), '1.0', true );
-    // Navigation behavior (mobile toggle + desktop submenu)
-    wp_enqueue_script( 'ghh-navigation', get_template_directory_uri() . '/assets/js/navigation.js', array(), '1.0', true );
+	// 4. Page-specific styles.
+	if ( is_page_template( 'templates/page-newsletter.php' ) ) {
+		ghh_enqueue_style( 'newsletter', 'assets/css/components/newsletter.css', array( 'ghh-header' ) );
+	}
+
+	if ( is_singular( 'post' ) ) {
+		ghh_enqueue_style( 'post', 'assets/css/layout/post.css', array( 'ghh-header' ) );
+	}
+
+	if ( is_front_page() ) {
+		ghh_enqueue_style( 'hero', 'assets/css/layout/hero.css', array( 'ghh-header' ) );
+	}
+
+	// 5. Footer last.
+	ghh_enqueue_style( 'footer', 'assets/css/layout/footer.css', array( 'ghh-header' ) );
+
+	// Scripts.
+	wp_enqueue_script(
+		'ghh-navigation',
+		get_template_directory_uri() . '/assets/js/navigation.js',
+		array(),
+		ghh_asset_version( 'assets/js/navigation.js' ),
+		array( 'in_footer' => true )
+	);
+
+	// Givebutter donation widgets (<givebutter-button>, <givebutter-widget> in page content).
+	wp_enqueue_script(
+		'givebutter',
+		'https://widgets.givebutter.com/latest.umd.cjs?acct=' . GHH_GIVEBUTTER_ACCOUNT,
+		array(),
+		null, // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion -- third-party "latest" bundle.
+		array(
+			'in_footer' => false,
+			'strategy'  => 'async',
+		)
+	);
+
+	// Links to #givebutter-CAMPAIGNID open that campaign's form in a pop-up (see the file header).
+	wp_enqueue_script(
+		'ghh-givebutter',
+		get_template_directory_uri() . '/assets/js/givebutter.js',
+		array(),
+		ghh_asset_version( 'assets/js/givebutter.js' ),
+		array(
+			'in_footer' => true,
+			'strategy'  => 'defer',
+		)
+	);
+	wp_localize_script( 'ghh-givebutter', 'ghhGivebutter', array( 'fallbackUrl' => home_url( '/donate/' ) ) );
 }
 add_action( 'wp_enqueue_scripts', 'ghh_enqueue_assets' );

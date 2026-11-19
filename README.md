@@ -27,7 +27,7 @@
 3. Import the live site content:
 
    - Follow [Copying the live site with All-in-One WP Migration](#copying-the-live-site-with-all-in-one-wp-migration).
-   - Do this **before** creating the symlink in step 5. An import replaces the contents of `wp-content/themes`, and if the symlink already exists the import can write into your cloned repo.
+   - Do this **before** creating the symlink in step 5. An import replaces the contents of `wp-content/themes`, which removes the symlink if it already exists.
 
 4. Locate the theme folder inside the new LocalWP site:
 
@@ -50,11 +50,6 @@
 6. Restart the site in LocalWP:
    - Stop the site and start it again, or use the restart button.
    - Refresh the browser preview if it is open.
-
-## Using the theme
-
-- In the WordPress admin, go to `Appearance -> Themes`.
-- Activate the `ghh-theme` theme if it is not already active.
 
 ## Copying the live site with All-in-One WP Migration
 
@@ -80,7 +75,15 @@ Use [All-in-One WP Migration](https://wordpress.org/plugins/all-in-one-wp-migrat
 6. Confirm the warning that the import will overwrite the local site, then wait for it to finish.
 7. Log in again using your **live site** username and password. The import replaces the local users.
 8. Go to `Settings -> Permalinks` and click **Save Changes** twice. This rebuilds the URL rules so pages don't return 404 errors.
-9. Continue with the environment setup steps (symlink the theme, then restart the site).
+9. Deactivate Wordfence on the local site. The import doesn't bring over all of Wordfence's database tables, and without them every local page takes about 30 seconds to load. In LocalWP, click **Open Site Shell** and run:
+
+   ```bash
+   wp plugin deactivate wordfence
+   ```
+
+   This only affects your local copy; Wordfence stays active on the live site. Repeat this after every import, because importing turns it back on.
+
+10. Continue with the environment setup steps (symlink the theme, then restart the site).
 
 ### Increasing the upload size in LocalWP
 
@@ -111,6 +114,7 @@ Notes:
 ## Editor handbooks
 
 - Newsletter editing and styling: `docs/newsletter-handbook.md`
+- Donate buttons and Givebutter forms: `docs/donate-buttons.md`
 
 ## Pushing changes
 
@@ -138,6 +142,8 @@ Notes:
 
 5. Create a pull request for review.
 6. After review, merge the pull request.
+
+> Note: If you add or change a block pattern, bump `Version` in `style.css`, or the change won't show on the live site.
 
 > Note: [WP Pusher](https://wppusher.com/) should update the theme on the live site automatically after the merge. If it doesn't, update it manually in the live site's admin: go to `WP Pusher -> Themes` and click **Update theme**.
 

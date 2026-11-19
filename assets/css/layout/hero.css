@@ -124,7 +124,6 @@
 }
 .home-hero--split .hero-title {
 	margin-bottom: 0.5rem;
-	font-family: "Sofia Sans", sans-serif !important;
 	font-size: 4rem;
 }
 .home-hero--split .hero-excerpt {
@@ -188,4 +187,15 @@
 	.hero-inner {
 		/* padding: 4rem 2rem; */
 	}
+}
+
+/* Hero social icons (template-parts/social-links.php).
+   Beats the core "Logos only" per-brand colors. */
+.hero-inner .wp-block-social-links {
+	flex-wrap: nowrap;
+	justify-content: space-between;
+}
+
+.hero-inner .wp-block-social-links.is-style-logos-only .wp-social-link {
+	color: #431313;
 }

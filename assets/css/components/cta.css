@@ -1,0 +1,139 @@
+/*
+	* cta.css — call-to-action blocks inserted from the patterns in /patterns.
+	* Loaded on every page and in the block editor. Colors set on a block in the
+	* editor (has-*-color classes) override these defaults.
+	*
+	* On the front end this classic theme wraps a Group's children in
+	* .wp-block-group__inner-container; the editor doesn't. So the layout rules
+	* target whichever element directly holds the blocks.
+	*/
+
+/* Centered donate button at the end of a blog post (patterns/blog-cta*.php).
+   The heart is added here so editors only type the label. */
+.ghh-cta-mini {
+	margin-top: var(--space-md);
+	padding-block: 8px;
+}
+
+.ghh-cta-mini:not(:has(> .wp-block-group__inner-container)),
+.ghh-cta-mini > .wp-block-group__inner-container {
+	display: flex;
+	justify-content: center;
+}
+
+.ghh-cta-mini .ghh-cta-mini__buttons {
+	justify-content: center;
+	margin: 0;
+}
+
+.ghh-cta-mini .wp-block-button__link {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 28px;
+	border-radius: 6px;
+	background-color: var(--green-600);
+	color: var(--color-white);
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.ghh-cta-mini .wp-block-button__link::before {
+	content: "";
+	width: 1.1em;
+	height: 1.1em;
+	flex-shrink: 0;
+	background-color: currentColor;
+	-webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center / contain no-repeat;
+	mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.ghh-cta-mini .wp-block-button__link:hover,
+.ghh-cta-mini .wp-block-button__link:focus-visible {
+	background-color: var(--green-700);
+}
+
+/* Featured call to action band (patterns/cta-featured.php). */
+.ghh-cta-feature {
+	margin-block: var(--space-md);
+	padding: clamp(28px, 5vw, 56px);
+	border-radius: 12px;
+	background-color: var(--berry-900);
+	color: var(--color-white);
+}
+
+.ghh-cta-feature:not(:has(> .wp-block-group__inner-container)),
+.ghh-cta-feature > .wp-block-group__inner-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 16px;
+}
+
+.ghh-cta-feature :is(.ghh-cta-feature__label, .ghh-cta-feature__title, .ghh-cta-feature__text, .ghh-cta-feature__buttons) {
+	margin: 0;
+}
+
+.ghh-cta-feature__label {
+	align-self: flex-start;
+	width: fit-content;
+	padding: 4px 12px;
+	border-radius: 999px;
+	background-color: var(--gold-500);
+	color: var(--berry-900);
+	font-size: 0.875rem;
+	font-weight: 800;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.ghh-cta-feature .ghh-cta-feature__title {
+	max-width: 24ch;
+	color: var(--color-white);
+	font-size: clamp(1.75rem, 4vw, 2.5rem);
+	line-height: 1.15;
+	text-wrap: balance;
+}
+
+.ghh-cta-feature__text {
+	max-width: 60ch;
+	color: var(--berry-50);
+	font-size: 1.125rem;
+}
+
+.ghh-cta-feature .ghh-cta-feature__buttons {
+	gap: 10px;
+	margin-top: 4px;
+}
+
+.ghh-cta-feature .wp-block-button__link {
+	padding: 8px 20px;
+	border: 2px solid var(--color-white);
+	border-radius: 6px;
+	font-size: 0.9375rem;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.ghh-cta-feature__primary .wp-block-button__link {
+	background-color: var(--color-white);
+	color: var(--berry-900);
+}
+
+.ghh-cta-feature__secondary .wp-block-button__link {
+	background-color: transparent;
+	color: var(--color-white);
+}
+
+.ghh-cta-feature .wp-block-button__link:hover,
+.ghh-cta-feature .wp-block-button__link:focus-visible {
+	border-color: var(--gold-500);
+}
+
+/* Hidden Givebutter element that assets/js/givebutter.js clicks to open a form.
+   Kept off-screen (not display:none) so its pop-up can still appear. */
+.ghh-givebutter-host {
+	position: absolute;
+	top: 0;
+	left: -9999px;
+}

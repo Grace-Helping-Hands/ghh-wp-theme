@@ -1,4 +1,4 @@
-/* buttons.css placeholder */
+/* buttons.css — .btn* classes are applied to Button blocks by editors (Additional CSS class). */
 .button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
@@ -83,8 +83,4 @@
 /* Active */
 .link:active {
   color: var(--color-accent-green);
-}
-
-.link {
-
 }

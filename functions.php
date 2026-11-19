@@ -1,26 +1,26 @@
 <?php
-// Theme bootstrap: load core includes
-require_once get_template_directory() . '/inc/setup.php';
-require_once get_template_directory() . '/inc/enqueue.php';
-require_once get_template_directory() . '/inc/helpers.php';
-require_once get_template_directory() . '/inc/newsletters.php';
+/**
+ * Theme bootstrap.
+ *
+ * Every feature lives in its own file under inc/. Keep this file to
+ * require_once calls only.
+ *
+ * @package ghh
+ */
 
+defined( 'ABSPATH' ) || exit;
 
-add_action('init', function () {
-    add_post_type_support('page', 'excerpt');
-});
+$ghh_includes = array(
+	'inc/setup.php',      // Theme supports, menus, text domain, editor styles.
+	'inc/helpers.php',    // Small template helpers (reading time, assets).
+	'inc/customizer.php', // Appearance -> Customize -> Theme Options (+ ghh_get_option()).
+	'inc/enqueue.php',    // Front-end styles and scripts.
+	'inc/widgets.php',    // Widget areas (sidebar, footer).
+	'inc/blocks.php',     // Block pattern category (patterns live in /patterns).
+	'inc/newsletters.php', // Newsletter content type + listing helpers.
+);
 
-function register_my_custom_menus() {
-    register_nav_menus(
-        array(
-            'extra-footer-menu'    => __( 'Extra Footer Menu' )
-        )
-    );
+foreach ( $ghh_includes as $ghh_file ) {
+	require_once get_template_directory() . '/' . $ghh_file;
 }
-add_action( 'init', 'register_my_custom_menus' );
-
-add_theme_support('custom-logo');
-
-// Additional includes (optional)
-// require_once get_template_directory() . '/inc/customizer.php';
-// require_once get_template_directory() . '/inc/widgets.php';
+unset( $ghh_includes, $ghh_file );
