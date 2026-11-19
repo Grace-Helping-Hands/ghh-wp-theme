@@ -1,6 +1,7 @@
-/* containers.css placeholder */
+/* containers.css — .container is used by the theme AND by editors on Group/Columns blocks. */
 .container {
 	max-width: 1200px;
+	/* !important: beats the margin-bottom core adds to Columns/Group blocks using .container */
 	margin: 0 auto !important;
 	padding-left: 15px;
 	padding-right: 15px;

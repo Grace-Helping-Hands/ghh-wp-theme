@@ -1,4 +1,8 @@
-/* custom.css - user overrides */
+/*
+ * Newsletter page (templates/page-newsletter.php, template-parts/newsletter/card.php).
+ * Loaded only on pages using the Newsletter template — see inc/enqueue.php.
+ * Editor guide: docs/newsletter-handbook.md
+ */
 
 .newsletter-container {
 	width: min(100%, 1200px);
@@ -8,7 +12,6 @@
 }
 
 .newsletter-page {
-	/* color: var(--color-primary); */
 	background: #fff;
 	border-top: 1px solid rgba(70, 19, 18, 0.12);
 }
@@ -17,20 +20,17 @@
 	padding: 32px 0 26px;
 }
 
-.newsletter-page__title,
-.newsletter-single__title {
+.newsletter-page__title {
 	margin: 0;
 	font-size: clamp(2.75rem, 5vw, 4.25rem);
 	line-height: 1;
 	letter-spacing: 0;
-	/* color: var(--color-primary); */
 }
 
 .newsletter-page__body {
 	margin-top: 34px;
 	font-size: 1.05rem;
 	line-height: 1.55;
-	/* color: var(--color-primary); */
 }
 
 .newsletter-page__body > * {
@@ -69,7 +69,6 @@
 	margin: 0 0 14px;
 	font-size: 1.45rem;
 	line-height: 1.2;
-	/* color: var(--color-primary); */
 }
 
 .newsletter-page__body .wp-block-group p {
@@ -136,7 +135,6 @@
 	display: grid;
 	height: 100%;
 	place-items: center;
-	/* color: var(--color-primary); */
 	font-size: 1.1rem;
 	font-weight: 800;
 }
@@ -157,7 +155,6 @@
 
 .newsletter-card__title {
 	margin: 0 0 8px;
-	/* color: var(--color-primary); */
 	font-size: clamp(1.25rem, 1.8vw, 1.5rem);
 	line-height: 1.2;
 	letter-spacing: 0;
@@ -215,55 +212,6 @@
 	font-size: 1.25rem;
 }
 
-.newsletter-single {
-	padding: 48px 0 80px;
-	color: var(--color-primary);
-}
-
-.newsletter-single__article {
-	width: min(100%, 980px);
-}
-
-.newsletter-single__back {
-	display: inline-block;
-	margin-bottom: 32px;
-	color: var(--color-primary);
-	font-weight: 800;
-	text-decoration: none;
-}
-
-.newsletter-single__header {
-	margin-bottom: 28px;
-}
-
-.newsletter-single__excerpt {
-	max-width: 760px;
-	margin-top: 18px;
-	font-size: 1.3rem;
-	line-height: 1.45;
-}
-
-.newsletter-single__excerpt p {
-	margin: 0;
-}
-
-.newsletter-single__image {
-	margin: 0 0 34px;
-}
-
-.newsletter-single__image img {
-	display: block;
-	width: 100%;
-	height: auto;
-	border-radius: 8px;
-}
-
-.newsletter-single__content {
-	font-size: 1.2rem;
-	line-height: 1.7;
-	/* color: var(--color-primary); */
-}
-
 @media (max-width: 1100px) {
 	.newsletter-page__body .wp-block-columns,
 	.newsletter-card {
@@ -296,14 +244,12 @@
 		padding-inline: 16px;
 	}
 
-	.newsletter-page__title,
-	.newsletter-single__title {
+	.newsletter-page__title {
 		font-size: 2.65rem;
 	}
 
 	.newsletter-page__body,
-	.newsletter-card__summary,
-	.newsletter-single__content {
+	.newsletter-card__summary {
 		font-size: 1rem;
 	}
 

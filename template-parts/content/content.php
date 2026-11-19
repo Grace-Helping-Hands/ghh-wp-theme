@@ -1,8 +1,17 @@
+<?php
+/**
+ * Default content markup (used by index.php for posts).
+ *
+ * @package ghh
+ */
+
+defined( 'ABSPATH' ) || exit;
+?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <header class="entry-header">
-        <?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
-    </header>
-    <div class="entry-content">
-        <?php the_content(); ?>
-    </div>
+	<header class="entry-header">
+		<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
+	</header>
+	<div class="entry-content">
+		<?php the_content(); ?>
+	</div>
 </article>

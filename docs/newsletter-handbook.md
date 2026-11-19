@@ -47,6 +47,15 @@ The listing card uses:
 
 If the `Newsletter Link` field is empty, the `Read Newsletter` button is not shown.
 
+### Optional: Featured image and Excerpt
+
+You can override what the card shows without changing the Body:
+
+- **Featured image** (right sidebar): used as the card image instead of the first image in the Body.
+- **Excerpt** (right sidebar): used as the card summary instead of the Body text.
+
+Leave them empty to keep the default behavior described above.
+
 ## PDF Newsletter
 
 For a PDF newsletter:
@@ -95,7 +104,9 @@ The template styles this structure to match the design.
 
 Newsletter styles live in:
 
-`assets/css/custom.css`
+`assets/css/components/newsletter.css`
+
+This file is only loaded on pages that use the `Newsletter` template.
 
 Important classes:
 
@@ -118,9 +129,11 @@ The card grid is controlled by:
 
 The card uses a 12-column layout inside the page container:
 
-- `.newsletter-card__media`: 4 columns.
-- `.newsletter-card__content`: 6 columns.
+- `.newsletter-card__media`: 3 columns.
+- `.newsletter-card__content`: 7 columns.
 - `.newsletter-card__button`: 2 columns.
+
+Below 1100px wide, the card stacks into a single column.
 
 Adjust those spans if the image, text, or button columns need different proportions.
 
@@ -133,6 +146,12 @@ Newsletter logic lives in:
 The page template lives in:
 
 `templates/page-newsletter.php`
+
+Each card's markup lives in:
+
+`template-parts/newsletter/card.php`
+
+Only users who can edit a specific newsletter (Editors, Administrators, and the newsletter's own Author) can change its `Newsletter Link`.
 
 The content type is admin-only. Newsletter items are used as data for the listing page, not as public landing pages.
 

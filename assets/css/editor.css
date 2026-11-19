@@ -1,0 +1,9 @@
+/*
+ * Block editor only (loaded via add_editor_style() in inc/setup.php).
+ * WordPress scopes these rules to the editor canvas automatically.
+ */
+body {
+	font-family: var(--font-sans);
+	color: var(--text-color-body);
+	-webkit-font-smoothing: antialiased;
+}
