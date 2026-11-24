@@ -115,6 +115,7 @@ Notes:
 
 - Newsletter editing and styling: `docs/newsletter-handbook.md`
 - Donate buttons and Givebutter forms: `docs/donate-buttons.md`
+- Button styles (classes, examples, adding a color): `docs/buttons.md`
 
 ## Pushing changes
 

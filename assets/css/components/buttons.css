@@ -1,37 +1,50 @@
 /* buttons.css
  *
- * BUTTONS — put the classes on the link or <button> itself:
- *   <a class="btn btn-primary btn-lg" href="/donate/">Donate</a>
+ * BUTTONS — two ways to use the same classes:
  *
- *   btn                 required base (medium size, primary color, solid)
- *   Color:  btn-primary (berry, default) · btn-accent (green) · btn-white (for dark or photo backgrounds)
- *   Style:  solid (default) · btn-outline
- *   Size:   btn-sm · btn-md (default) · btn-lg
- *   Width:  btn-block (full width)
+ *   1. Button block: Advanced → Additional CSS class(es): btn btn-primary btn-lg
+ *      (WordPress puts the classes on the block wrapper; the link inside gets the style.)
+ *   2. Theme templates: on the link or <button> itself:
+ *      <a class="btn btn-primary btn-lg" href="/donate/">Donate</a>
  *
- * Combine one of each: "btn btn-outline btn-accent btn-sm" is a small green outline button.
+ *   btn                 required base (medium, primary, solid)
  *
- * Add a color: one class that sets the four variables below, e.g.
- *   :where(a, button, input).btn-gold { --btn-color: ...; --btn-color-hover: ...; --btn-on: ...; --btn-focus: ...; }
- *   --btn-color        fill (solid) or border and text (outline)
- *   --btn-color-hover  fill on hover
- *   --btn-on           text on the fill
- *   --btn-focus        keyboard focus ring
- * Every color must give --btn-on at least 4.5:1 against --btn-color and --btn-color-hover.
+ *   Color (solid)       btn-primary (berry, default) · btn-secondary (green)
+ *                       btn-accent (gold) · btn-white (for dark or photo backgrounds)
+ *   Color (outline)     btn-outline (berry) · btn-outline-primary · btn-outline-secondary
+ *                       btn-outline-accent · btn-outline-white
+ *                       (a Button block set to the editor's "Outline" style also works)
+ *   Size                btn-sm · btn-md (default) · btn-lg
+ *   Width               btn-block (full width)
  *
- * The :where(a, button, input) part keeps these rules off the old Button-block wrappers further down.
+ * Pick one color and, if needed, one size: "btn btn-outline-secondary btn-sm" is a
+ * small green outline button. Hover darkens the color; outline buttons fill.
+ *
+ * Add a color "x": add ".btn-x, .btn-outline-x" to a rule that sets these variables.
+ * Any class starting with btn-outline gets the outline style automatically.
+ *   --btn-color        fill
+ *   --btn-color-hover  fill on hover, a little darker
+ *   --btn-on           text on the fill (at least 4.5:1 against both fills)
+ *   --btn-ink          outline border and text (optional, defaults to --btn-color)
+ *   --btn-focus        keyboard focus ring (optional)
+ * Colors and sizes are variables, so they work on the wrapper or the link alike.
  */
 
-/* Base: medium, berry, solid */
-:where(a, button, input).btn {
+/* Defaults: medium, berry, solid */
+.btn {
 	--btn-color: var(--berry-button);
 	--btn-color-hover: var(--berry-600);
 	--btn-on: var(--color-white);
+	--btn-ink: var(--btn-color);
 	--btn-focus: var(--berry-900);
 	--btn-height: 48px;
 	--btn-padding: 1.5rem;
 	--btn-font-size: 1rem;
+}
 
+/* The button itself: a link/button with .btn, or the link inside a Button block with .btn */
+:is(a, button, input).btn,
+.wp-block-button.btn > .wp-block-button__link {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -40,6 +53,7 @@
 	padding: 0 var(--btn-padding);
 	border: 2px solid var(--btn-color);
 	border-radius: 3px;
+	box-shadow: none;
 	background: var(--btn-color);
 	color: var(--btn-on);
 	font-family: inherit;
@@ -49,69 +63,92 @@
 	text-align: center;
 	text-decoration: none;
 	cursor: pointer;
+	transition: none;
 }
-:where(a, button, input).btn:hover {
+:is(a, button, input).btn:hover,
+.wp-block-button.btn > .wp-block-button__link:hover {
 	border-color: var(--btn-color-hover);
 	background: var(--btn-color-hover);
 	color: var(--btn-on);
 	text-decoration: none;
 }
-:where(a, button, input).btn:focus-visible {
+:is(a, button, input).btn:focus-visible,
+.wp-block-button.btn > .wp-block-button__link:focus-visible {
 	outline: 3px solid var(--btn-focus);
 	outline-offset: 3px;
 }
-:where(a, button, input).btn:is(:disabled, [aria-disabled="true"]) {
+:is(a, button, input).btn:is(:disabled, [aria-disabled="true"]) {
 	opacity: 0.5;
 	cursor: not-allowed;
 	pointer-events: none;
 }
 
-/* Colors */
-:where(a, button, input).btn-primary {
+/* Colors: each class sets the solid version and its outline twin */
+.btn-primary,
+.btn-outline,
+.btn-outline-primary {
 	--btn-color: var(--berry-button);
 	--btn-color-hover: var(--berry-600);
 	--btn-on: var(--color-white);
+	--btn-ink: var(--berry-button);
 }
-:where(a, button, input).btn-accent {
+.btn-secondary,
+.btn-outline-secondary {
 	--btn-color: var(--green-600);
 	--btn-color-hover: var(--green-700);
 	--btn-on: var(--color-white);
+	--btn-ink: var(--green-600);
 }
-:where(a, button, input).btn-white {
+/* Gold takes dark text (white fails contrast); outline uses the darker gold for text on white. */
+.btn-accent,
+.btn-outline-accent {
+	--btn-color: var(--gold-500);
+	--btn-color-hover: color-mix(in srgb, var(--gold-500), #000 10%);
+	--btn-on: var(--berry-900);
+	--btn-ink: var(--gold-800);
+}
+.btn-white,
+.btn-outline-white {
 	--btn-color: var(--color-white);
 	--btn-color-hover: var(--berry-50);
 	--btn-on: var(--berry-900);
+	--btn-ink: var(--color-white);
 	--btn-focus: var(--color-white);
 }
 
-/* Style: outline. Border and text in the color; fills on hover. */
-:where(a, button, input).btn.btn-outline {
+/* Outline style: any btn-outline* class, or the Button block's "Outline" style.
+   Border and text in --btn-ink; fills with --btn-color on hover. */
+:is(a, button, input).btn[class*="btn-outline"],
+.wp-block-button.btn:is([class*="btn-outline"], .is-style-outline) > .wp-block-button__link {
+	border-color: var(--btn-ink);
 	background: transparent;
-	color: var(--btn-color);
+	color: var(--btn-ink);
 }
-:where(a, button, input).btn.btn-outline:hover {
+:is(a, button, input).btn[class*="btn-outline"]:hover,
+.wp-block-button.btn:is([class*="btn-outline"], .is-style-outline) > .wp-block-button__link:hover {
+	border-color: var(--btn-color);
 	background: var(--btn-color);
 	color: var(--btn-on);
 }
 
 /* Sizes */
-:where(a, button, input).btn-sm {
+.btn-sm {
 	--btn-height: 40px;
 	--btn-padding: 1rem;
 	--btn-font-size: 0.9375rem;
 }
-:where(a, button, input).btn-md {
+.btn-md {
 	--btn-height: 48px;
 	--btn-padding: 1.5rem;
 	--btn-font-size: 1rem;
 }
-:where(a, button, input).btn-lg {
+.btn-lg {
 	--btn-height: 64px;
 	--btn-padding: 2.5rem;
 	--btn-font-size: 1.1875rem;
 }
 @media (max-width: 599px) {
-	:where(a, button, input).btn-lg {
+	.btn-lg {
 		--btn-height: 56px;
 		--btn-padding: 1.5rem;
 		--btn-font-size: 1.0625rem;
@@ -119,70 +156,47 @@
 }
 
 /* Width */
-:where(a, button, input).btn-block {
+:is(a, button, input).btn-block,
+.wp-block-button.btn-block,
+.wp-block-button.btn-block > .wp-block-button__link {
 	display: flex;
 	width: 100%;
 }
 
 
 /* ==========================================================================
- * LEGACY — delete once no page uses them.
- * Old classes added to Button blocks (Advanced → Additional CSS class):
- * btn, btn-primary, btn-secondary, btn-brand-1 on the block wrapper, styling the link inside.
- * Still used on: Home, About, Become a Volunteer, Donate, In-Person and Remote
- * Volunteer Opportunities, Our Sponsors & Local Partners, and footer.php.
+ * LEGACY — delete once nothing uses them.
+ * btn-brand-1 (orange) keeps its old color in the new shape.
+ * Used on: Home, Donate, Sponsors & Partners.
+ * The rest is the footer newsletter link (footer.php), which isn't a Button block.
  * ========================================================================== */
+.btn-brand-1 {
+	--btn-color: var(--color-brand-1);
+	--btn-color-hover: color-mix(in srgb, var(--color-brand-1), #000 12%);
+	--btn-on: var(--color-primary);
+}
+
+/* Footer newsletter link: div.btn.btn-brand-1 > a.button.footer-cta */
 .button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
 	background: var(--color-primary);
 	color: #fff;
 }
-
-.btn {
-	a {
-		display: inline-block;
-		padding: 1.125rem 1.5rem;
-		border-radius: 12px;
-		font-weight: 700;
-		text-decoration: none;
-		font-size: 1.125rem;
-		transition: background-color 150ms ease, transform 120ms ease,
-			box-shadow 150ms ease, border 200ms;
-		cursor: pointer;
-		/* box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18); */
-		-webkit-font-smoothing: antialiased;
-	}
+.btn a:not(.wp-block-button__link) {
+	display: inline-block;
+	padding: 1.125rem 1.5rem;
+	border-radius: 12px;
+	font-weight: 700;
+	text-decoration: none;
+	font-size: 1.125rem;
+	cursor: pointer;
+	-webkit-font-smoothing: antialiased;
 }
-
-.btn-primary {
-	a {
-		background: var(--color-primary);
-		color: var(--color-white);
-		border: 4px solid var(--color-primary);
-	}
-}
-
-.btn-secondary {
-	a {
-		background: var(--color-accent-2);
-		color: var(--color-primary);
-		border: 4px solid var(--color-accent-2);
-	}
-}
-
-.btn-brand-1 {
-	a {
-		background-color: var(--color-brand-1);
-		color: var(--color-primary);
-		border: 4px solid var(--color-brand-1);
-	}
-}
-
-.btn:hover {
-	a {
-		border: 4px solid #461312;
-	}
+.btn-brand-1 a:not(.wp-block-button__link) {
+	background-color: var(--color-brand-1);
+	color: var(--color-primary);
+	border: 4px solid var(--color-brand-1);
 }
 
 /* Text links */

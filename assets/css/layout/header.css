@@ -146,8 +146,15 @@
 	border-bottom: 1px solid #461312;
 }
 
+/* Donate button: no "current page" underline, even on the Donate page. */
+#site-navigation .menu > .menu-item.menu-donate > a,
 #site-navigation .menu > .menu-item.current-menu-item.menu-donate > a {
-	border-bottom: 4px solid var(--green-900);
+	border-bottom-color: var(--green-600);
+	text-decoration: none;
+}
+#site-navigation .menu > .menu-item.menu-donate > a:hover,
+#site-navigation .menu > .menu-item.current-menu-item.menu-donate > a:hover {
+	border-color: var(--green-700);
 }
 
 /* Menu nav-icon defaults (mobile) */
@@ -188,17 +195,21 @@
    Green with white text: 6.0:1 contrast; darker green on hover. */
 #site-navigation .menu > li.menu-donate > a {
 	padding: 1rem 2rem;
-	border: 4px solid var(--green-600);
+	border: 2px solid var(--green-600);
 	border-radius: 4px;
 	display: inline-block;
 	background-color: var(--green-600);
 	color: var(--color-white);
 }
 
-#site-navigation .menu > li.menu-donate > a:hover,
-#site-navigation .menu > li.menu-donate > a:focus-visible {
-	border: 4px solid var(--green-800);
+/* Hover: a little darker. No border change. */
+#site-navigation .menu > li.menu-donate > a:hover {
+	border-color: var(--green-700);
 	background-color: var(--green-700);
+}
+#site-navigation .menu > li.menu-donate > a:focus-visible {
+	outline: 3px solid var(--berry-900);
+	outline-offset: 3px;
 }
 
 /* Remove blue underlines from nav links */

@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GHH Button Styles</title>
+<link rel="stylesheet" href="../assets/css/base/variables.css">
+<link rel="stylesheet" href="../assets/css/components/buttons.css">
+<style>
+/* Reference sheet: the site's own light look, on purpose single-theme. */
+:root { color-scheme: light; --sheet-bg: #FFFFFF; --sheet-ink: #30212B; --sheet-muted: #6B6268; --sheet-rule: #E7DFE4; --sheet-code: #F8EFF4; --sheet-band: #40152C; }
+* { box-sizing: border-box; }
+body { background: var(--sheet-bg); color: var(--sheet-ink); font-family: "Sofia Sans", "Segoe UI", system-ui, sans-serif; font-size: 16px; line-height: 1.5; }
+.sheet { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 40px 72px; display: grid; gap: 48px; }
+h1 { margin: 0 0 8px; font-size: 2rem; font-weight: 600; color: #40152C; }
+h2 { margin: 0 0 4px; font-size: 1.25rem; font-weight: 600; color: #40152C; }
+.lede, .sub { margin: 0; color: var(--sheet-muted); max-width: 64ch; }
+section { display: grid; gap: 20px; padding-top: 24px; border-top: 1px solid var(--sheet-rule); }
+.howto { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.howto ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.howto h3 { margin: 0 0 8px; font-size: 1rem; font-weight: 600; }
+pre { margin: 0; padding: 12px 14px; background: var(--sheet-code); border-radius: 3px; overflow-x: auto; font-size: 0.875rem; }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.875rem; }
+.grid { display: grid; gap: 28px 24px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); align-items: start; }
+.item { display: grid; gap: 10px; justify-items: start; min-width: 0; }
+.item .wp-block-buttons { width: 100%; }
+.code { display: inline-flex; gap: 8px; align-items: center; max-width: 100%; padding: 4px 8px; border: 1px solid var(--sheet-rule); border-radius: 3px; background: var(--sheet-code); color: var(--sheet-ink); cursor: pointer; text-align: left; }
+.code code { overflow-wrap: anywhere; }
+.code:hover { border-color: #A32D6B; }
+.code:focus-visible { outline: 2px solid #40152C; outline-offset: 2px; }
+.copied { font-size: 0.75rem; color: #286E60; }
+.note { margin: 0; font-size: 0.875rem; color: var(--sheet-muted); }
+.band { background: var(--sheet-band); padding: 24px; border-radius: 3px; }
+.band .code { background: #FFFFFF; }
+.band .note { color: #F8EFF4; }
+.wide .grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; }
+th, td { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--sheet-rule); vertical-align: top; }
+th { font-weight: 600; color: #40152C; }
+.table-wrap { overflow-x: auto; }
+td code { white-space: nowrap; display: inline-block; margin: 0 6px 4px 0; }
+</style>
+
+</head>
+<body>
+<main class="sheet">
+  <header>
+    <h1>Button styles</h1>
+    <p class="lede">Open this file in a browser from the repo: it loads the theme's real CSS from assets/css. Hover to see the hover state, Tab to see keyboard focus, and click a class name to copy it.</p>
+  </header>
+
+  <section aria-labelledby="h-how">
+    <h2 id="h-how">How to use them</h2>
+    <div class="howto">
+      <div>
+        <h3>In the editor (Button block)</h3>
+        <ol>
+          <li>Add a Buttons block and select the button.</li>
+          <li>In the sidebar, open <strong>Advanced</strong>.</li>
+          <li>In <strong>Additional CSS class(es)</strong>, type the classes, for example <code>btn btn-primary</code>.</li>
+          <li>Leave the block's own color settings empty; they would override these.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>In theme templates</h3>
+        <pre><code>&lt;a class="btn btn-primary btn-lg" href="/donate/"&gt;Donate&lt;/a&gt;
+&lt;a class="btn btn-outline btn-lg" href="/volunteer/"&gt;Volunteer&lt;/a&gt;</code></pre>
+      </div>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">Always</th><th scope="col">Pick one color</th><th scope="col">Optional size</th><th scope="col">Optional width</th></tr></thead>
+      <tbody><tr>
+        <td><code>btn</code></td>
+        <td><code>btn-primary</code> <code>btn-secondary</code> <code>btn-accent</code> <code>btn-white</code><br><code>btn-outline</code> <code>btn-outline-primary</code> <code>btn-outline-secondary</code> <code>btn-outline-accent</code> <code>btn-outline-white</code></td>
+        <td><code>btn-sm</code> <code>btn-md</code> <code>btn-lg</code></td>
+        <td><code>btn-block</code></td>
+      </tr></tbody>
+    </table></div>
+  </section>
+
+  <section aria-labelledby="h-solid"><div><h2 id="h-solid">Solid</h2><p class="sub">For the main action in a section. Use one solid button per group.</p></div><div class="grid"><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-primary"><a class="wp-block-button__link wp-element-button" href="#">Donate</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-primary" aria-label="Copy btn btn-primary"><code>btn btn-primary</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">Berry. Main action.</p>
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-secondary"><a class="wp-block-button__link wp-element-button" href="#">Volunteer</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-secondary" aria-label="Copy btn btn-secondary"><code>btn btn-secondary</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">Green.</p>
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-accent"><a class="wp-block-button__link wp-element-button" href="#">Join the drive</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-accent" aria-label="Copy btn btn-accent"><code>btn btn-accent</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">Gold, dark text.</p>
+</div></div></section>
+  <section aria-labelledby="h-outline"><div><h2 id="h-outline">Outline</h2><p class="sub">For the second action next to a solid one. Fills with its color on hover.</p></div><div class="grid"><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-outline"><a class="wp-block-button__link wp-element-button" href="#">Learn more</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-outline" aria-label="Copy btn btn-outline"><code>btn btn-outline</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">Same as btn-outline-primary.</p>
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-outline-secondary"><a class="wp-block-button__link wp-element-button" href="#">Volunteer</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-outline-secondary" aria-label="Copy btn btn-outline-secondary"><code>btn btn-outline-secondary</code><span class="copied" aria-live="polite"></span></button>
+  
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-outline-accent"><a class="wp-block-button__link wp-element-button" href="#">Join the drive</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-outline-accent" aria-label="Copy btn btn-outline-accent"><code>btn btn-outline-accent</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">Darker gold text for contrast.</p>
+</div></div></section>
+  <section aria-labelledby="h-dark"><div><h2 id="h-dark">On dark or photo backgrounds</h2><p class="sub">White versions, for plum bands or over photos.</p></div><div class="band"><div class="grid"><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-white"><a class="wp-block-button__link wp-element-button" href="#">Donate</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-white" aria-label="Copy btn btn-white"><code>btn btn-white</code><span class="copied" aria-live="polite"></span></button>
+  
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-outline-white"><a class="wp-block-button__link wp-element-button" href="#">Learn more</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-outline-white" aria-label="Copy btn btn-outline-white"><code>btn btn-outline-white</code><span class="copied" aria-live="polite"></span></button>
+  
+</div></div></div></section>
+  <section aria-labelledby="h-size"><div><h2 id="h-size">Sizes</h2><p class="sub">Medium is the default. Large is for the home hero and other page-opening actions.</p></div><div class="grid"><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-primary btn-sm"><a class="wp-block-button__link wp-element-button" href="#">Small</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-primary btn-sm" aria-label="Copy btn btn-primary btn-sm"><code>btn btn-primary btn-sm</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">40px</p>
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-primary"><a class="wp-block-button__link wp-element-button" href="#">Medium</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-primary" aria-label="Copy btn btn-primary"><code>btn btn-primary</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">48px, the default</p>
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-primary btn-lg"><a class="wp-block-button__link wp-element-button" href="#">Large</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-primary btn-lg" aria-label="Copy btn btn-primary btn-lg"><code>btn btn-primary btn-lg</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">64px, 56px on phones</p>
+</div></div></section>
+  <section class="wide" aria-labelledby="h-combo"><div><h2 id="h-combo">Combining</h2><p class="sub">Any color with any size. Full width is for narrow columns and phones.</p></div><div class="grid"><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-outline-secondary btn-sm"><a class="wp-block-button__link wp-element-button" href="#">Read the report</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-outline-secondary btn-sm" aria-label="Copy btn btn-outline-secondary btn-sm"><code>btn btn-outline-secondary btn-sm</code><span class="copied" aria-live="polite"></span></button>
+  
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-accent btn-lg"><a class="wp-block-button__link wp-element-button" href="#">Give today</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-accent btn-lg" aria-label="Copy btn btn-accent btn-lg"><code>btn btn-accent btn-lg</code><span class="copied" aria-live="polite"></span></button>
+  
+</div><div class="item">
+  <div class="wp-block-buttons"><div class="wp-block-button btn btn-primary btn-block"><a class="wp-block-button__link wp-element-button" href="#">Donate</a></div></div>
+  <button type="button" class="code" data-copy="btn btn-primary btn-block" aria-label="Copy btn btn-primary btn-block"><code>btn btn-primary btn-block</code><span class="copied" aria-live="polite"></span></button>
+  <p class="note">Full width</p>
+</div></div></section>
+</main>
+
+<script>
+document.addEventListener("click", function (e) {
+  var link = e.target.closest(".wp-block-button__link");
+  if (link) { e.preventDefault(); return; }
+  var btn = e.target.closest(".code");
+  if (!btn) return;
+  var text = btn.getAttribute("data-copy");
+  var msg = btn.querySelector(".copied");
+  function done(ok) { msg.textContent = ok ? "Copied" : "Select and copy"; setTimeout(function () { msg.textContent = ""; }, 1600); }
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); });
+  } else { done(false); }
+});
+</script>
+</body>
+</html>
