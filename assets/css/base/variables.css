@@ -15,6 +15,8 @@
 	--berry-700: #702C50;
 	--berry-800: #59203E;
 	--berry-900: #40152C;
+	/* Buttons: the logo berry (600) with more color. White text 6.7:1; hover uses berry-600. */
+	--berry-button: #A32D6B;
 
 	/* Secondary brand: Green */
 	--green-50: #EDF5F2;
