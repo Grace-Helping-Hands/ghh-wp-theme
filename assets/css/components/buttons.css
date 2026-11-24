@@ -1,4 +1,137 @@
-/* buttons.css — .btn* classes are applied to Button blocks by editors (Additional CSS class). */
+/* buttons.css
+ *
+ * BUTTONS — put the classes on the link or <button> itself:
+ *   <a class="btn btn-primary btn-lg" href="/donate/">Donate</a>
+ *
+ *   btn                 required base (medium size, primary color, solid)
+ *   Color:  btn-primary (berry, default) · btn-accent (green) · btn-white (for dark or photo backgrounds)
+ *   Style:  solid (default) · btn-outline
+ *   Size:   btn-sm · btn-md (default) · btn-lg
+ *   Width:  btn-block (full width)
+ *
+ * Combine one of each: "btn btn-outline btn-accent btn-sm" is a small green outline button.
+ *
+ * Add a color: one class that sets the four variables below, e.g.
+ *   :where(a, button, input).btn-gold { --btn-color: ...; --btn-color-hover: ...; --btn-on: ...; --btn-focus: ...; }
+ *   --btn-color        fill (solid) or border and text (outline)
+ *   --btn-color-hover  fill on hover
+ *   --btn-on           text on the fill
+ *   --btn-focus        keyboard focus ring
+ * Every color must give --btn-on at least 4.5:1 against --btn-color and --btn-color-hover.
+ *
+ * The :where(a, button, input) part keeps these rules off the old Button-block wrappers further down.
+ */
+
+/* Base: medium, berry, solid */
+:where(a, button, input).btn {
+	--btn-color: var(--berry-button);
+	--btn-color-hover: var(--berry-600);
+	--btn-on: var(--color-white);
+	--btn-focus: var(--berry-900);
+	--btn-height: 48px;
+	--btn-padding: 1.5rem;
+	--btn-font-size: 1rem;
+
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	min-height: var(--btn-height);
+	padding: 0 var(--btn-padding);
+	border: 2px solid var(--btn-color);
+	border-radius: 3px;
+	background: var(--btn-color);
+	color: var(--btn-on);
+	font-family: inherit;
+	font-size: var(--btn-font-size);
+	font-weight: 600;
+	line-height: 1.2;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+}
+:where(a, button, input).btn:hover {
+	border-color: var(--btn-color-hover);
+	background: var(--btn-color-hover);
+	color: var(--btn-on);
+	text-decoration: none;
+}
+:where(a, button, input).btn:focus-visible {
+	outline: 3px solid var(--btn-focus);
+	outline-offset: 3px;
+}
+:where(a, button, input).btn:is(:disabled, [aria-disabled="true"]) {
+	opacity: 0.5;
+	cursor: not-allowed;
+	pointer-events: none;
+}
+
+/* Colors */
+:where(a, button, input).btn-primary {
+	--btn-color: var(--berry-button);
+	--btn-color-hover: var(--berry-600);
+	--btn-on: var(--color-white);
+}
+:where(a, button, input).btn-accent {
+	--btn-color: var(--green-600);
+	--btn-color-hover: var(--green-700);
+	--btn-on: var(--color-white);
+}
+:where(a, button, input).btn-white {
+	--btn-color: var(--color-white);
+	--btn-color-hover: var(--berry-50);
+	--btn-on: var(--berry-900);
+	--btn-focus: var(--color-white);
+}
+
+/* Style: outline. Border and text in the color; fills on hover. */
+:where(a, button, input).btn.btn-outline {
+	background: transparent;
+	color: var(--btn-color);
+}
+:where(a, button, input).btn.btn-outline:hover {
+	background: var(--btn-color);
+	color: var(--btn-on);
+}
+
+/* Sizes */
+:where(a, button, input).btn-sm {
+	--btn-height: 40px;
+	--btn-padding: 1rem;
+	--btn-font-size: 0.9375rem;
+}
+:where(a, button, input).btn-md {
+	--btn-height: 48px;
+	--btn-padding: 1.5rem;
+	--btn-font-size: 1rem;
+}
+:where(a, button, input).btn-lg {
+	--btn-height: 64px;
+	--btn-padding: 2.5rem;
+	--btn-font-size: 1.1875rem;
+}
+@media (max-width: 599px) {
+	:where(a, button, input).btn-lg {
+		--btn-height: 56px;
+		--btn-padding: 1.5rem;
+		--btn-font-size: 1.0625rem;
+	}
+}
+
+/* Width */
+:where(a, button, input).btn-block {
+	display: flex;
+	width: 100%;
+}
+
+
+/* ==========================================================================
+ * LEGACY — delete once no page uses them.
+ * Old classes added to Button blocks (Advanced → Additional CSS class):
+ * btn, btn-primary, btn-secondary, btn-brand-1 on the block wrapper, styling the link inside.
+ * Still used on: Home, About, Become a Volunteer, Donate, In-Person and Remote
+ * Volunteer Opportunities, Our Sponsors & Local Partners, and footer.php.
+ * ========================================================================== */
 .button {
 	display: inline-block;
 	padding: 0.5rem 1rem;
